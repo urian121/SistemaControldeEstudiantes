@@ -17,10 +17,9 @@ class Cursos extends Model
     ];
 
 
-    /**Relacion de 1 a 1, 1 profe solo puede pertenecer a un curso */
-    public function Profesores(){
-        return $this->hasOne(Profesores::class);
-
+    /**Relacion un profe puede tener mas de 1 curso */
+    public function profesores(){
+        return $this->hasMany(Profesores::class);
     }
 
 }

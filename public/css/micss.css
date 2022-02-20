@@ -1,0 +1,218 @@
+
+
+.form-group label{
+    color: #333 !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+}
+
+
+.nav-tabs .nav-item .nav-link.active{
+  font-weight: 600;
+  background-color: #f6f8fa;
+}
+.nav-tabs .nav-link{
+	font-weight: 600;
+	background-color: #f6f8fa;
+}
+
+.pl-4, .px-4{
+  padding-left: 0px !important;
+}
+
+#bt-cancelar{
+	background-color: #999;
+	color: #fff;
+}
+
+#bt-cancelar:hover{
+	background-color: #777;
+}
+
+.form-control, .dataTables_wrapper select{
+	border: 1px solid #ccc !important;
+	/*border:1px solid #f3f3f3 gris claro*/
+}
+
+select.form-control, .dataTables_wrapper select{
+	color: #333;
+}
+
+.mdi-arrow-left:before {
+    color: #0190e0 !important;
+    font-size: 25px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+/**Cambiando el color del header**/
+.navbar .navbar-menu-wrapper{
+	background-color: #0190e0 !important;
+    border-color: #0190e0 !important;
+    color: #fff !important;
+}
+.navbar .navbar-brand-wrapper{
+	background-color: #0190e0 !important;
+    border-color: #0190e0 !important;
+}
+.nav-profile-name{
+	color: #fff !important;
+	font-weight: 600 !important;
+}
+.navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile .nav-link::after{
+	color: #fff !important;
+	font-size: 25px;
+}
+.mdi-sort-variant:before{
+	color: #fff;
+}
+/***fin style header***/
+
+.card .card-title{
+	background: #0190e0 !important;
+    padding: 10px;
+    color: #fff;
+}
+
+#specialImgUpdate{
+  width: 100%;
+  /*max-width: 200px;*/
+ /* max-height: 150px;
+  min-height: 150px; */
+  border-radius: 5px;
+}
+
+
+/***Estelizando el input type file**/
+.upload-field-customized {
+    width: 100%;
+  height: auto;
+  position: relative;
+  cursor: pointer;
+}
+ .upload-field-customized input[type="file"] {
+   position: absolute;
+   width: 100%;
+   opacity: 0;
+   cursor: pointer;
+   left: 0px;
+   top: 0px;
+   z-index: 10;
+}
+ .upload-field-customized span {
+  font-weight: bold;
+   text-align: center;
+   width: 100%;
+   display: block;
+   line-height: 25px;
+} 
+ .upload-field-customized span a{
+  color: #333;
+  cursor: pointer;
+  text-decoration:underline;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+ }
+
+
+
+/***tab heade **/
+#styleIcon{
+  font-weight: 600;
+  color: blue;
+ font-size: 30px;
+}
+
+.btnlogo{
+  position: absolute;
+  margin-top: -100px;
+  margin-left: 80px;
+  float: ro;
+  background: rgba(68, 66, 66, 0.70);
+  padding: 15px;
+  border-radius: 25px;
+  color: #fff;
+}
+
+.btnbanner{
+  position: absolute;
+  margin-top: -100px;
+  margin-left: -25px;
+  float: ro;
+  background: rgba(68, 66, 66, 0.70);
+  padding: 15px;
+  border-radius: 25px;
+  color: #fff;
+}
+
+
+
+
+/** SWITCH **/
+  .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        margin-top: 7px;
+    }
+
+    /* Hide default HTML checkbox */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    /* The slider */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: crimson;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked+.slider {
+        background-color: green;
+    }
+
+    input:focus+.slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
+.deletPaddignBtn{
+  padding: 0.5rem 1.5rem !important;
+}

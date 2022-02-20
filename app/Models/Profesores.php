@@ -15,10 +15,9 @@ class Profesores extends Model
         'nameFull', 'cedula', 'phone', 'profesion', 'foto_profesor', 'curso_id'
     ];
 
-
     /**RELACION DE 1 A MUCHOS, un profe puede tener mas de una materia (curso)*/
-    public function Cursos(){
-        return $this->hasMany(Cursos::class);
+    public function curso(){
+        return $this->belongsTo(Cursos::class);
     }
 
 }
