@@ -16,8 +16,8 @@ class CreateAlumnosTable extends Migration
             //$table->string('email')->unique();
             $table->string('email_alumno')->nullable();
             $table->string('ciudad', 150)->nullable();
-            $table->string('phone_alumno', 10)->nullable();
-            $table->string('edad_alumno', 2)->nullable();
+            $table->string('phone_alumno')->nullable();
+            $table->string('edad_alumno')->nullable();
             $table->text('addres')->nullable();
             $table->string('foto_estudiante',50)->nullable();
 

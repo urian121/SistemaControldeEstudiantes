@@ -20,6 +20,7 @@ class CreateProfesoresTable extends Migration
             $table->string('profesion',150)->nullable();
             $table->string('foto_profesor',50)->nullable();
 
+            
             /*Creando relacion version 8 de Laravel */
             $table->foreignId('curso_id')
                 ->nullable()

@@ -10,3 +10,5 @@
 <script src="{{ asset('js/data-table.js') }}"></script>
 <script src="{{ asset('js/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('js/dataTables.bootstrap4.js') }}"></script>
+
+<script src="{{ asset('js/mis_Scripts.js') }}"></script>

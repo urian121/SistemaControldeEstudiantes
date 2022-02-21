@@ -18,7 +18,9 @@
       <li class="nav-item nav-profile dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
           <img src="{{ asset('images/faces/face5.jpg') }}" alt="profile"/>
+          @if (Auth::check())
           <span class="nav-profile-name"> {{ Auth::user()->name }}</span>
+          @endif
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
           <a class="dropdown-item">
@@ -26,7 +28,7 @@
             Mi Perfil
           </a>
           <a href="{{ route('login') }}" class="dropdown-item">
-            <i class="mdi mdi-logout text-primary"></i>
+            <i class="mdi mdi-power text-primary"></i>
             Salir
           </a>
         </div>

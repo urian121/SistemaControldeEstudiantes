@@ -12,39 +12,13 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cargando.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}"/>
-    <style>
-      select{
-        color: #333 !important;
-      }
-      thead{
-        text-align:center;
-        background: #cecece;
-      }
-      .w-5{
-        width: 40px !important;
-      }
-    </style>
 </head>
 <body>
     <div id="app">
 
-        @include('layouts.menuHorizontal')
-        
-        @include('layouts.menuVertical')
-
-
-        <div class="main-panel">
-            <div class="content-wrapper">
-              
-                  @yield('content')
-
-            </div>
-          </div>
-
+      @yield('content')
 
     </div>
-
-
 
     @include('layouts.layoutJS')
     

@@ -4,7 +4,7 @@
         
 
 
-
+<div class="row justify-content-center">
 <div class="col-md-4 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
@@ -32,10 +32,15 @@
                 <input type="text" name="profesion" class="form-control">
             </div>
             <div class="form-group">
-                <label for="exampleInputUsername1">Curso</label>
-                <input type="text" name="curso_id" class="form-control">
+                <label class="col-sm-12 col-form-label">Asignar Curso</label>
+                <select name="curso_id" class="form-control form-control-sm">
+                    <option value="">Seleccione</option>
+                    @foreach ($cursos as $curso)
+                        <option value="{{ $curso->id }}"> {{ $curso->nombre_curso }}</option>
+                    @endforeach
+                </select>
             </div>
-            
+
             <div class="form-group">
                 <label for="exampleInputUsername1">Foto del Profesor</label>
                 <input type="file" name="foto_profesor" class="form-control">
@@ -44,7 +49,7 @@
             
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary mr-2">Registrar</button>
-                <button class="btn btn-inverse-dark btn-fw">Cancelar</button>
+                <a href="/"  class="btn btn-inverse-dark btn-fw">Cancelar</a>
             </div>
         </form>
         </div>
@@ -72,16 +77,18 @@
                 <td>{{ $profe->nameFull }}</td>
                 <td>{{ $profe->cedula }}</td>
                 <td>{{ $profe->phone }}</td>
-                <td>
-                    <a href=""  class="btn btn-inverse-primary btn-fw" style="padding: 8px 15px !important;">
-                        <i class="mdi mdi-delete-sweep"></i> Modificar
-                    </a>
-     
-                    <form method="POST" action="{{ route('profe.destroy', $profe->id) }}">
-                        @method('DELETE')
+                <td style="float: right">
+                    <form action="{{ route('profe.destroy', $profe->id) }}" method="POST">
+                        <a class="btn btn-inverse-primary" href="{{ route('profe.show',$profe->id) }}"  style="padding: 8px 15px !important;" title="Ver Detalles">
+                            <i class="mdi mdi-account-card-details"></i> Ver
+                        </a>
+                        <a class="btn btn-inverse-success" href="{{ route('profe.edit',$profe->id) }}"  style="padding: 8px 5px !important;" title="Actualizar Registro">
+                            <i class="mdi mdi-autorenew"></i>Actualizar
+                        </a>
                         @csrf
-                        <button type="submit"  class="btn btn-inverse-danger btn-fw" style="padding: 8px 15px !important;">
-                            <i class="mdi mdi-delete-sweep"></i> Borrar
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-inverse-danger"  style="padding:  8px 5px !important;" title="Borrar Alumno">
+                            <i class="mdi mdi-delete-sweep"></i>Borrar
                         </button>
                     </form>
                 </td>
@@ -95,6 +102,7 @@
 
         </div>
     </div>
+</div>
 </div>
 </div>
 @else

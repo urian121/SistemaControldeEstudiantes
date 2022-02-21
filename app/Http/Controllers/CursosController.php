@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-use App\Models\Cursos;
 use Illuminate\Http\Request;
+
+use DB;
+
+use App\Models\Cursos;
+
 
 class CursosController extends Controller
 {
@@ -19,9 +22,10 @@ class CursosController extends Controller
 
     public function create()
     {
-        $cursos = Cursos::orderBy('id', 'DESC')->paginate(3);
-        return view('cursos.add', compact('cursos'));
-        
+        $update =0;
+        $cursosTable = Cursos::orderBy('id', 'DESC')->paginate(3);
+        $cursosTotal = Cursos::all();
+        return view('cursos.add', compact('cursosTable','cursosTotal','update'));        
     }
 
     public function store(Request $request)
@@ -40,28 +44,37 @@ class CursosController extends Controller
         
     }
 
-    public function show(Cursos $cursos)
+    public function edit($id)
+      {
+        $update =1;
+        $curso       = Cursos::findOrFail($id);
+
+        $cursosTable = Cursos::orderBy('id', 'DESC')->paginate(3);
+        $cursosTotal = Cursos::all();
+        return view('cursos.add', compact('curso','cursosTable','cursosTotal','update'));
+    }
+
+    public function update(Request $request, $id)
     {
-        //
+        $curso = Cursos::find($id);
+        $curso->nombre_curso       = $request->nombre_curso;
+        $curso->precio_curso     = $request->precio_curso;
+
+        $curso->save();
+
+        /**Cargando datos para redireccionar a la vista con datos predeterminados */
+        $update =0;
+        $cursosTable = Cursos::orderBy('id', 'DESC')->paginate(3);
+        $cursosTotal = Cursos::all();
+        return view('cursos.add', compact('cursosTable','cursosTotal','update'));  
     }
 
 
-    public function edit(Cursos $cursos)
+    public function destroy(Request $request, $id)
     {
-        //
-    }
 
-
-    public function update(Request $request, Cursos $cursos)
-    {
-        //
-    }
-
-
-    public function destroy(Cursos $cursos)
-    {
+        $cursos = Cursos::findOrFail($id);
         $cursos->delete();
-        //Post::where('id', $id)->delete();
-        return redirect('/curso/create')->with('success', 'Game Data is successfully deleted');
+        return redirect('/curso/create')->with('mensaje', 'El Curso fue Borrado correctamente.');
     }
 }
