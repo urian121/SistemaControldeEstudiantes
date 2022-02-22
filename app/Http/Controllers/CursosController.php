@@ -15,6 +15,7 @@ class CursosController extends Controller
     public function index()
     {
        /*   
+        $total = profesores::all()->count();
         $cursos = Cursos::orderBy('id', 'DESC')->paginate(5);
         return view('cursos', compact('cursos'));
         */

@@ -14,12 +14,12 @@ class ProfesoresController extends Controller
         //
     }
 
-
     public function create()
     {
+        $update =0;
         $cursos = Cursos::get();
         $profes = Profesores::orderBy('id', 'DESC')->paginate(3);
-        return view('profes.addProfe', compact('profes','cursos'));
+        return view('profes.addProfe', compact('profes','cursos','update'));
     }
 
 
@@ -64,15 +64,51 @@ class ProfesoresController extends Controller
     }
 
 
-    public function edit(Profesores $profesores)
+    public function edit($id)
     {
-        //
+        $update =1;
+        $profe = Profesores::findOrFail($id);
+        $cursos = Cursos::all();
+        return view('profes.addProfe', compact('profe','cursos','update'));  
+
     }
 
 
-    public function update(Request $request, Profesores $profesores)
+    public function update(Request $request, $id)
     {
-        //
+
+        if ($request->hasFile('foto_profesor')) {
+            $file = $request->file('foto_profesor');  
+            $nombrearchivo = time()."_".$file->getClientOriginalName();  
+            $file->move(public_path('/fotosProfes/'),$nombrearchivo); 
+
+            $profe = Profesores::findOrFail($id);
+            $profe->nameFull        = $request->nameFull;
+            $profe->cedula          = $request->cedula;
+            $profe->phone           = $request->phone;
+            $profe->email           = $request->email;
+            $profe->profesion       = $request->profesion;
+            $profe->curso_id        = $request->curso_id;
+            $profe->foto_profesor   = $nombrearchivo;
+            
+            $profe->save();
+        }else{
+            $profe = Profesores::findOrFail($id);
+            $profe->nameFull        = $request->nameFull;
+            $profe->cedula          = $request->cedula;
+            $profe->phone           = $request->phone;
+            $profe->email           = $request->email;
+            $profe->profesion       = $request->profesion;
+            $profe->curso_id        = $request->curso_id;
+            
+            $profe->save();
+        }
+        
+        $update = 0;
+        $cursos = Cursos::get();
+        $profes = Profesores::orderBy('id', 'DESC')->paginate(3);
+        return view('profes.addProfe', compact('profes','cursos','update'));
+
     }
 
 

@@ -81,7 +81,6 @@
         </div>
     </div>
 </div> 
-@endif
 
 
 @if($cursosTable->count())
@@ -127,10 +126,13 @@
     </div>
 </div>
 </div>
-</div>
+
 @else
 <p> No se ha creado ningún Curso </p>
 @endif
 
+@endif <!---fin del primer if else -->
 
+
+</div>
 @endsection

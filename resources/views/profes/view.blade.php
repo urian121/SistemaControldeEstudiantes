@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-12">
             <div class="card" style="width: 30rem;">
-                @if ( $prof->foto_estudiante !=NULL )
+                @if ( $prof->foto_profesor !=NULL )
                 <img class="card-img-top" src="/fotosProfes/{{ $prof->foto_profesor }}" alt="Foto-Profe" class="imgs" style="width:200px; margin: 0 auto;">
                 @else
                 <img class="card-img-top" src="{{ asset('images/users.png') }}" alt="Foto-Profe" class="imgs" style="width:200px; margin: 0 auto;">   
