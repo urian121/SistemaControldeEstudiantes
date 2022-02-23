@@ -12,3 +12,5 @@
 <script src="{{ asset('js/dataTables.bootstrap4.js') }}"></script>
 
 <script src="{{ asset('js/mis_Scripts.js') }}"></script>
+
+<script src="{{ asset('js/barra/pace.min.js') }}"></script> <!--barra de carga -->

@@ -26,3 +26,4 @@ class Pagos extends Model
     }
 
 }
+

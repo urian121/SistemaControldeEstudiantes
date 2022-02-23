@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('vendors/base/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/cargando.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/barra/pace2.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}"/>
     <style>
       select{
@@ -43,7 +43,6 @@
 
 
     </div>
-
 
 
     @include('layouts.layoutJS')

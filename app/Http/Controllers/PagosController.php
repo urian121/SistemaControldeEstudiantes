@@ -30,9 +30,9 @@ class PagosController extends Controller
         if($request->ajax()){
             //$alumno = Alumnos::findOrFail($id);
            // return view('pagos.add', compact('alumno'));
-
+            dd($request->all());
             return response()->json([
-                'mensaje'=> '<strong>Felicitaciones ! </strong> El Profesor' .$request.' fue Borrado.'
+                'mensaje'=> '<p>' .$request->all().'</p>'
             ]);  
         }
     }

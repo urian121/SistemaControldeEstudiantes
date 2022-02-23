@@ -27,10 +27,18 @@
             <i class="mdi mdi-settings text-primary"></i>
             Mi Perfil
           </a>
-          <a href="{{ route('login') }}" class="dropdown-item">
+
+          <a class="dropdown-item" href="{{ route('logout') }}"
+          onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
             <i class="mdi mdi-power text-primary"></i>
             Salir
           </a>
+          
+          <form id="logout-form" action="{{ route('logout') }}" method="POST">
+           @csrf
+          </form>
+
         </div>
       </li>
     </ul>

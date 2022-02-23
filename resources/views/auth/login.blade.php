@@ -8,10 +8,10 @@
         <div class="row w-100 mx-0">
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-              <div class="brand-logo">
-                <img src="{{ asset('images/logo.svg') }}" alt="logo">
+              <div class="brand-logo text-center">
+                <img src="{{ asset('images/logo.jpg') }}" alt="logo" style="width:120px;">
               </div>
-              <h4 class="text-center">Iniciar Sesión</h4>
+              <h1 class="text-center" style="font-weight: 800 !important;">Iniciar Sesión</h1>
 
               <form method="POST" action="{{ route('login') }}" class="pt-3">
                 @csrf

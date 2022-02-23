@@ -9,7 +9,7 @@
         <div class="card">
             <div class="card-body">
             <h2 class="card-title text-center">REGISTRAR NUEVO PAGO <hr></h2>
-            <form class="forms-sample" method="post" action="" enctype="multipart/form-data">
+            <form id="form" name="form" class="forms-sample" method="post" action="" enctype="multipart/form-data">
                 @csrf
                 <div class="row mb-3">
                     <div class="col-md-6">
@@ -64,7 +64,6 @@
 
 <div id="resp"> ---</div>
 
-
 @endsection
 
 @section('script')
@@ -85,7 +84,7 @@
             enctype: 'multipart/form-data',
             url:"{{ route('pago.store') }}",
             dataType: 'json',
-            data: dataString,
+            data:{ "alumno_id" : alumno_id },
             contentType: false,
             processData: false,
             success:function(data){
