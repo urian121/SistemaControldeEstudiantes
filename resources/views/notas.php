@@ -76,3 +76,88 @@ $user = auth()->user();
                             </li>
                         @endguest
                     </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+                    if($request->ajax()){
+           // $countries = DB::table('countries')->get();
+           // return view('users',compact('countries'));
+
+            $data = Alumnos::select("id")
+            ->where("id","LIKE","%{$request->query}%")
+            ->get();
+            return response()->json($data);
+
+
+             $countries = \DB::table('countries')
+            ->get();
+        
+        return view('dropdown', compact('countries'));
+
+
+          $states = \DB::table('states')
+            ->where('country_id', $request->country_id)
+            ->get();
+
+            
+           /* $countries = DB::table('countries')
+            ->get();
+        return view('dropdown', compact('countries'));
+
+        $categoris = Category::where('parent_id',0)->get();
+        return view('welcome',["categoris" => $categoris]);*/
+
+        /*
+        $states = DB::table('states')->whereCountryId($request->country_id)->get();
+        return response()->json($states);
+        */
+        /*
+        $cities = DB::table('cities')->whereStateId($request->state_id)->get();
+        return response()->json($cities);
+        */
+            /*
+               $states = DB::table("teachers")
+                ->where("nation_id",$id)
+                ->pluck("teacher_name","teacher_id");
+                return response()->json($teachers);  
+            */
+          /*  $states = DB::table('states')->where('id_country',$request->id_country)->pluck("name","id")->all();
+    		$data = view('ajax-select',compact('states'))->render();
+    		return response()->json(['options'=>$data]);*/
+
+            //$alumno = Alumnos::findOrFail($id);
+           // return view('pagos.add', compact('alumno'));
+            dd($request->all());
+            /*return response()->json([
+                'mensaje'=> '<p>' .$request->all().'</p>'
+            ]);  */
+        }
+
+        $affected = DB::table('users')
+              ->where('id', 1)
+              ->update(['votes' => 1]);
+
+              return redirect()->back()->with('message', 'Task added successfuly');
+
+
+              $users = DB::select('select * from users where active = ?', [1]);
+
+        return view('user.index', ['users' => $users]);
+
+        $affected = DB::update('update users set votes = 100 where name = ?', ['John']);
+
+
+        $last = DB::table('items')->latest()->first();
+        $last2 = DB::table('items')->orderBy('id', 'DESC')->first();
+        $last3 = DB::table('items')->latest('id')->first();

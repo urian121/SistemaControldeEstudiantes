@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\Pagos;
 use App\Models\Cursos;
 use App\Models\Alumnos;
@@ -27,28 +28,30 @@ class PagosController extends Controller
 
     public function store(Request $request)
     {
+
         if($request->ajax()){
-            //$alumno = Alumnos::findOrFail($id);
-           // return view('pagos.add', compact('alumno'));
-            dd($request->all());
+            $data = Alumnos::select("id")
+            ->where("id",$request->alumno_id)
+            ->get();
+
+            $data1=Alumnos::all();
+
+            $states = DB::table('alumnos')->where("id",$request->alumno_id)->get();
+            //return response()->json($states);
+
+            $alumno = DB::table('alumnos')
+            ->get();
+        
             return response()->json([
-                'mensaje'=> '<p>' .$request->all().'</p>'
+                'mensaje'=> $data1
             ]);  
         }
+
     }
 
 
-    public function show(Request $request, $id)
+    public function show(Request $request)
     {
-       
-        if($request->ajax()){
-            $alumno = Alumnos::findOrFail($id);
-           // return view('pagos.add', compact('alumno'));
-
-            return response()->json([
-                'mensaje'=> '<strong>Felicitaciones ! </strong> El Profesor fue Borrado.'
-            ]);  
-        }
 
     }
 

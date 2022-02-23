@@ -12,7 +12,6 @@ class CreateCursosTable extends Migration
         Schema::create('cursos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_curso', 250)->nullable();
-            //$table->integer('precio_curso')->unsigned();
             $table->unsignedInteger('precio_curso');
             $table->timestamps();
         });

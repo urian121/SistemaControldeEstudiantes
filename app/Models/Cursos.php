@@ -20,6 +20,7 @@ class Cursos extends Model
     /**Relacion un profe puede tener mas de 1 curso */
     public function profesores(){
         return $this->hasMany(Profesores::class);
+        //return $this->belongsTo(Profesores::class);
     }
 
 }

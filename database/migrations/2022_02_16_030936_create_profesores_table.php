@@ -16,7 +16,6 @@ class CreateProfesoresTable extends Migration
             $table->integer('cedula')->unsigned();
             $table->integer('phone')->nullable();
             $table->string('email')->nullable();
-            //$table->string('email')->unique();
             $table->string('profesion',150)->nullable();
             $table->string('foto_profesor',50)->nullable();
 

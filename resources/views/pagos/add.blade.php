@@ -81,7 +81,6 @@
 
         $.ajax({
             type:'POST',
-            enctype: 'multipart/form-data',
             url:"{{ route('pago.store') }}",
             dataType: 'json',
             data:{ "alumno_id" : alumno_id },
