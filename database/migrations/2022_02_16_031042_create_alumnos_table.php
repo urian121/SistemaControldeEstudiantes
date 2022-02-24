@@ -12,7 +12,7 @@ class CreateAlumnosTable extends Migration
         Schema::create('alumnos', function (Blueprint $table) {
             $table->id();
             $table->string('nameFullAlumno',150)->nullable();
-            $table->integer('cedula_alumno')->unsigned();
+            $table->integer('cedula_alumno',50)->unsigned();
             $table->string('email_alumno')->nullable();
             $table->string('ciudad', 150)->nullable();
             $table->string('phone_alumno')->nullable();

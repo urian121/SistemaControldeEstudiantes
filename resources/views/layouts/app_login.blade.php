@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="{{ asset('vendors/base/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/cargando.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}"/>
 </head>
 <body>

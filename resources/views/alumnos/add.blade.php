@@ -32,13 +32,19 @@
             @csrf
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label class="col-sm-6 col-form-label">Nombre y Apellido</label>
                     <div class="col-sm-12">
                       <input type="text" name="nameFullAlumno" class="form-control" required/>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
+                    <label class="col-sm-6 col-form-label">Cédula</label>
+                    <div class="col-sm-12">
+                      <input type="number" name="cedula_alumno" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-4">
                     <label class="col-sm-6 col-form-label">Correo</label>
                     <div class="col-sm-12">
                       <input type="email" name="email_alumno" class="form-control" />

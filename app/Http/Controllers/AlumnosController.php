@@ -54,6 +54,7 @@ class AlumnosController extends Controller
 
             $data = new Alumnos([
                 'nameFullAlumno'=>$request->get('nameFullAlumno'),
+                'cedula_alumno'=>$request->get('cedula_alumno'),
                 'email_alumno'=>$request->get('email_alumno'),
                 'ciudad'=>$request->get('ciudad'),
                 'phone_alumno'=>$request->get('phone_alumno'),
@@ -63,11 +64,13 @@ class AlumnosController extends Controller
                 'curso_id'=>$request->get('curso_id'),
                 'profesor_id'=>$request->get('profesor_id'),
                  
+
             ]);
             $data->save(); 
         }else{
             $data = new Alumnos([
                 'nameFullAlumno'=>$request->get('nameFullAlumno'),
+                'cedula_alumno'=>$request->get('cedula_alumno'),
                 'email_alumno'=>$request->get('email_alumno'),
                 'ciudad'=>$request->get('ciudad'),
                 'phone_alumno'=>$request->get('phone_alumno'),

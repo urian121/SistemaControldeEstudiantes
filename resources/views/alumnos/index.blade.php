@@ -25,8 +25,8 @@
             @foreach ($alumnos as $alumno)
             <tr>
                 <td>{{ $alumno->nameFullAlumno }}</td>
-                <td>--</td>
-                <td>{{ $alumno->email  }}</td>
+                <td>{{ $alumno->cedula_alumno }}</td>
+                <td>{{ $alumno->email_alumno  }}</td>
                 <td>{{ $alumno->ciudad }}</td>
                 <td style="float: right">
                     <form action="{{ route('alumno.destroy',$alumno->id) }}" method="POST">
