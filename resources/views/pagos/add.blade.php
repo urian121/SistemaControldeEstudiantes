@@ -52,8 +52,8 @@
     
                 
                 <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary mr-2">Registrar Pago</button>
-                    <a href="/"  class="btn btn-inverse-dark btn-fw">Cancelar</a>
+                    <button type="submit" class="btn btn-primary mr-2 mb-3">Registrar Pago</button>
+                    <a href="/"  class="btn btn-inverse-dark btn-fw mb-3">Cancelar</a>
                 </div>
             </form>
             </div>

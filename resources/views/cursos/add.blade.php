@@ -44,8 +44,8 @@
                 <input type="number" name="precio_curso" class="form-control" value="{{ $curso->precio_curso }}" required>
             </div>
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary mr-2">Actualizar Curso</button>
-                <a href="/"  class="btn btn-inverse-dark btn-fw">Cancelar</a>
+                <button type="submit" class="btn btn-primary mr-2 mb-3">Actualizar Curso</button>
+                <a href="/"  class="btn btn-inverse-dark btn-fw mb-3">Cancelar</a>
             </div>
 
             <div class="form-group text-center">
@@ -74,8 +74,8 @@
                 <input type="number" name="precio_curso" class="form-control" required>
             </div>
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary mr-2">Registrar</button>
-                <a href="/"  class="btn btn-inverse-dark btn-fw">Cancelar</a>
+                <button type="submit" class="btn btn-primary mr-2 mb-3">Registrar</button>
+                <a href="/"  class="btn btn-inverse-dark btn-fw mb-3">Cancelar</a>
             </div>
         </form>
         </div>

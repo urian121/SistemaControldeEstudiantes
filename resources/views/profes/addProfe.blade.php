@@ -70,8 +70,8 @@
     
                 
                 <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary mr-2">Actualizar Datos</button>
-                    <a href="/"  class="btn btn-inverse-dark btn-fw">Cancelar</a>
+                    <button type="submit" class="btn btn-primary mr-2 mb-3">Actualizar Datos</button>
+                    <a href="/"  class="btn btn-inverse-dark btn-fw mb-3">Cancelar</a>
                 </div>
             </form>
             </div>
@@ -122,8 +122,8 @@
 
             
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary mr-2">Registrar</button>
-                <a href="/"  class="btn btn-inverse-dark btn-fw">Cancelar</a>
+                <button type="submit" class="btn btn-primary mr-2 mb-3">Registrar</button>
+                <a href="/"  class="btn btn-inverse-dark btn-fw mb-3">Cancelar</a>
             </div>
         </form>
         </div>

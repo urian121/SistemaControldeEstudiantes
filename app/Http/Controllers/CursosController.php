@@ -26,6 +26,7 @@ class CursosController extends Controller
         $update =0;
         $cursosTable = Cursos::orderBy('id', 'DESC')->paginate(3);
         $cursosTotal = Cursos::all();
+        // $table->timestamps();
         return view('cursos.add', compact('cursosTable','cursosTotal','update'));        
     }
 
