@@ -8833,7 +8833,6 @@ button:focus {
 
 input,
 button,
-select,
 optgroup,
 textarea {
   margin: 0;
@@ -8847,14 +8846,10 @@ input {
   overflow: visible;
 }
 
-button,
-select {
+button {
   text-transform: none;
 }
 
-select {
-  word-wrap: normal;
-}
 
 button,
 [type="button"],
@@ -10298,7 +10293,7 @@ pre code {
   border: 0;
 }
 
-.form-control, .dataTables_wrapper select {
+.form-control, .dataTables_wrapper {
   display: block;
   width: 100%;
   height: 2.875rem;
@@ -10314,11 +10309,7 @@ pre code {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .form-control, .dataTables_wrapper select {
-    transition: none;
-  }
-}
+
 
 .form-control::-ms-expand, .dataTables_wrapper select::-ms-expand {
   background-color: transparent;
@@ -10343,10 +10334,7 @@ pre code {
   opacity: 1;
 }
 
-select.form-control:focus::-ms-value, .dataTables_wrapper select:focus::-ms-value {
-  color: #495057;
-  background-color: #ffffff;
-}
+
 
 .form-control-file,
 .form-control-range {
@@ -10410,9 +10398,6 @@ select.form-control:focus::-ms-value, .dataTables_wrapper select:focus::-ms-valu
   border-radius: 0.3rem;
 }
 
-select.form-control[size], .dataTables_wrapper select[size], select.form-control[multiple], .dataTables_wrapper select[multiple] {
-  height: auto;
-}
 
 textarea.form-control {
   height: auto;
@@ -10622,51 +10607,12 @@ textarea.form-control {
   background-color: rgba(220, 53, 69, 0.9);
   border-radius: 0.25rem;
 }
-
-.was-validated .form-control:invalid, .was-validated .dataTables_wrapper select:invalid, .dataTables_wrapper .was-validated select:invalid, .form-control.is-invalid, .dataTables_wrapper select.is-invalid {
-  border-color: #dc3545;
-  padding-right: calc(1.5em + 0.75rem);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center right calc(0.375em + 0.1875rem);
-  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
-}
-
-.was-validated .form-control:invalid:focus, .was-validated .dataTables_wrapper select:invalid:focus, .dataTables_wrapper .was-validated select:invalid:focus, .form-control.is-invalid:focus, .dataTables_wrapper select.is-invalid:focus {
-  border-color: #dc3545;
-  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
-}
-
-.was-validated .form-control:invalid ~ .invalid-feedback, .was-validated .dataTables_wrapper select:invalid ~ .invalid-feedback, .dataTables_wrapper .was-validated select:invalid ~ .invalid-feedback,
-.was-validated .form-control:invalid ~ .invalid-tooltip,
-.was-validated .dataTables_wrapper select:invalid ~ .invalid-tooltip,
-.dataTables_wrapper .was-validated select:invalid ~ .invalid-tooltip, .form-control.is-invalid ~ .invalid-feedback, .dataTables_wrapper select.is-invalid ~ .invalid-feedback,
-.form-control.is-invalid ~ .invalid-tooltip,
-.dataTables_wrapper select.is-invalid ~ .invalid-tooltip {
-  display: block;
-}
-
 .was-validated textarea.form-control:invalid, textarea.form-control.is-invalid {
   padding-right: calc(1.5em + 0.75rem);
   background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
 }
 
-.was-validated .custom-select:invalid, .custom-select.is-invalid {
-  border-color: #dc3545;
-  padding-right: calc((1em + 0.75rem) * 3 / 4 + 1.75rem);
-  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E") #fff no-repeat center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
-}
 
-.was-validated .custom-select:invalid:focus, .custom-select.is-invalid:focus {
-  border-color: #dc3545;
-  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
-}
-
-.was-validated .custom-select:invalid ~ .invalid-feedback,
-.was-validated .custom-select:invalid ~ .invalid-tooltip, .custom-select.is-invalid ~ .invalid-feedback,
-.custom-select.is-invalid ~ .invalid-tooltip {
-  display: block;
-}
 
 .was-validated .form-control-file:invalid ~ .invalid-feedback,
 .was-validated .form-control-file:invalid ~ .invalid-tooltip, .form-control-file.is-invalid ~ .invalid-feedback,
@@ -10758,10 +10704,6 @@ textarea.form-control {
   .form-inline .form-control-plaintext {
     display: inline-block;
   }
-  .form-inline .input-group,
-  .form-inline .custom-select {
-    width: auto;
-  }
   .form-inline .form-check {
     display: flex;
     align-items: center;
@@ -10791,7 +10733,6 @@ textarea.form-control {
   color: #000;
   text-align: center;
   vertical-align: middle;
-  user-select: none;
   background-color: transparent;
   border: 1px solid transparent;
   padding: 0.75rem 1.5rem;
@@ -11810,9 +11751,8 @@ input[type="button"].btn-block {
   width: 100%;
 }
 
-.input-group > .form-control, .dataTables_wrapper .input-group > select,
+.input-group > .form-control, .dataTables_wrapper .input-group > 
 .input-group > .form-control-plaintext,
-.input-group > .custom-select,
 .input-group > .custom-file {
   position: relative;
   flex: 1 1 auto;

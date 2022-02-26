@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/barra/pace2.css') }}">
+
+    <link  rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link  rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}" />
+
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}"/>
     <style>
       select{
@@ -22,6 +26,35 @@
       }
       .w-5{
         width: 40px !important;
+      }
+
+      #sinDeudas h2{
+        color: green;
+        font-weight: 600;
+        background-color: #f9f9f9;
+        padding: 15px 5px;
+      }
+      .sidebar .nav .nav-item.active > .nav-link i, .sidebar .nav .nav-item.active > .nav-link .menu-title, .sidebar .nav .nav-item.active > .nav-link .menu-arrow{
+        color: #FF9900 !important;
+      }
+      .btn-primary {
+        color: #fff;
+        background-color: #ffb716;
+        border-color: #ffb716;
+      }
+      .btn-primary:hover{
+        background-color: #FF9900;
+        border-color: #FF9900;
+      }
+      .nav-link:hover{
+        color: #FF9900 !important;
+        font-weight: 600;
+      }
+      .text-primary{
+        color: #FF9900 !important;
+      }
+      .mdi-menu{
+        color: #fff !important;
       }
     </style>
 </head>

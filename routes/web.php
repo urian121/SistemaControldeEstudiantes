@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\ProfesoresController;
 use App\Http\Controllers\AlumnosController;
@@ -20,6 +19,14 @@ Route::resource('alumno', AlumnosController::class)->middleware('auth');
 Route::resource('pago', PagosController::class)->middleware('auth');
 Route::post('/pagoSave', 'App\Http\Controllers\PagosController@guardarPago')->name("pagoSave")->middleware('auth'); //Guardando Pago
 
+
+Route::get('/clear-cache', function () {
+    echo Artisan::call('config:clear');
+    echo Artisan::call('config:cache');
+    echo Artisan::call('cache:clear');
+    echo Artisan::call('route:clear');
+ });
+ 
 //Route::get('dashboard', 'AppHttpControllersUserController@dashboard')->middleware('auth');
 //Route::get("/gestionarMedicos", [PersonaController::class,"mostrarMedicos"])->name("personaMostrarMedicos")->middleware("auth","firstLogin","role:administrador");
 

@@ -5,8 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Profesores;
-
 
 class Cursos extends Model
 {
@@ -16,6 +14,8 @@ class Cursos extends Model
         'nombre_curso', 'precio_curso'
     ];
 
+    protected $table = "cursos";
+    protected $primaryKey = "id";
 
     /**Relacion un profe puede tener mas de 1 curso */
     public function profesores(){

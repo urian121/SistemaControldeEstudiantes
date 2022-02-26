@@ -4,9 +4,7 @@
         
 
 <div class="row justify-content-center">
-    <div id="resp"> ----------------</div>
-    <br>
-    <br>
+
     <div class="col-md-10 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
@@ -15,61 +13,65 @@
                 @csrf
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label  for="exampleInputUsername1">Datos del Alumno <em>(Nombre y Cédula)</em></label>
-                        <select name="alumno_id" id="alumno_id" class="form-control form-control-sm">
+                        <label  for="alumno_id">Datos del Alumno <em>(Nombre y Cédula)</em></label>
+                        <p style="background-color: #e9ecef !important;">
+                        <select name="alumno_id" id="alumno_id" style="background-color: #e9ecef !important;" class="selectpicker des">
                             <option value="">Seleccione</option>
                             @foreach ($alumnos as $alumno)
                                 <option value="{{ $alumno->id }}"> {{ $alumno->nameFullAlumno }} :: {{ $alumno->phone_alumno }}</option>
                             @endforeach
-                        </select>
+                          </select>
+                        </p>
                     </div>
 
                      <div class="col-md-6">
                         <label for="exampleInputUsername1">Curso del Alumno</label>
-                        <input type="text" name="curso_id" id="curso_id" class="form-control" readonly>
+                        <div id="IdCurso" style="background: #f9f9f9;padding: 10px; font-weight: 600;">
+                            <p></p>
+                        </div>
+                        <input type="text" name="curso_id" id="curso_id" class="form-control" hidden>
                     </div>
                 </div>
 
                 <div class="row  mb-3">
                     <div class="col-md-6">
                         <label for="exampleInputUsername1">Valor del Curso</label>
-                        <input type="text" name="valor_curso" id="valor_curso" class="form-control" readonly>
+                        $<input type="text" name="valor_curso" id="valor_curso" class="form-control" readonly>
                     </div>
                     <div class="col-md-6">
                         <label for="exampleInputUsername1">Saldo Pendiente</label>
-                        <input type="number" name="saldoPendiente" id="saldoPendiente" class="form-control" readonly>
+                        $<input type="number" name="saldoPendiente" id="saldoPendiente" class="form-control" readonly>
                     </div>
                 </div>
 
-                <div id="respuesta">
-                    @if (isset($CursoPrecio))
-
-                            @if ($CursoPrecio == $saldoPendiente)
-                                <h2>El alumno ya pago</h2>
-                            @else
-                            <h2>Alumno con deuda</h2>
-                            @endif
-                    @else
-                        
-                    @endif
-                </div>
-
-                <div class="row  mb-5">
-                    <div class="col-md-6">
-                        <label for="exampleInputUsername1">Aporte</label>
-                        <input type="number" name="aporte" class="form-control" required>
+                <section id="sectionPago">
+                    <div class="row  mb-5">
+                        <div class="col-md-6">
+                            <label for="exampleInputUsername1">Aporte</label>
+                            <input type="number" name="aporte" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleInputUsername1">Foto del Pago</label>
+                            <input type="file" name="photo_pago" class="form-control" >
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="exampleInputUsername1">Foto del Pago</label>
-                        <input type="file" name="photo_pago" class="form-control" >
+        
+                    
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary mr-2 mb-3">Registrar Pago</button>
+                        <a href="/"  class="btn btn-inverse-dark btn-fw mb-3">Cancelar</a>
+                    </div>
+                </section>
+
+                <section id="sinDeudas" style="display: none;">
+                <div class="row mt-5 mb-5">
+                    <div class="col-md-12 text-center">
+                        <h2>El Alumno ya ha cancelado todo el valor del Curso</h2>
                     </div>
                 </div>
-    
-                
-                <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary mr-2 mb-3">Registrar Pago</button>
-                    <a href="/"  class="btn btn-inverse-dark btn-fw mb-3">Cancelar</a>
-                </div>
+            </section>
+
+
             </form>
             </div>
         </div>
@@ -104,28 +106,37 @@
             data:{ "alumno_id" : alumno_id },
             success:function(data){
                // $('#resp').html(JSON.stringify(data.infoAlumno));
-                var alumnoCursoId = (JSON.stringify(data.infoAlumno[0].curso_id));
-                var CursoPrecio = (JSON.stringify(data.infoCurso[0].precio_curso));
-                var PagosAlumno = ((data.infoPagosCurso));
-             
+                var alumnoCurso     = ((data.infoAlumno));
+                var CursoPrecio     = (JSON.stringify(data.infoCurso[0].precio_curso));
+                var PagosAlumno     = (data.infoPagosCurso);
+                var idCursoAlumno   =  (data.infoAlumnoIdCurso); 
+
+                $('#IdCurso').html(alumnoCurso); 
+                $('#curso_id').val(idCursoAlumno); 
+                $('#valor_curso').val(CursoPrecio);
+                
                 //Validando si existe algun pago que ha realizado el Alumno para este curso
                 if(!PagosAlumno.length) { //No ha realizado ningun pago para ste curso
                     $('#saldoPendiente').val(CursoPrecio); 
-                    //$('#resp').html(PagosAlumnoAporte);
+    
                 }else{ //Si ha realizado al menos un pago para este curso
-                    var PagosAlumnoAporte = (JSON.stringify(data.infoPagosCurso[0].aporte));
-                    var saldoPendiente    = (CursoPrecio - PagosAlumnoAporte);
-                    $('#saldoPendiente').val(saldoPendiente); 
-                    $('#respuesta').html(CursoPrecio + saldoPendiente);
-                    
+
+                    if(CursoPrecio == PagosAlumno){
+                        var saldoPendiente    = (CursoPrecio - PagosAlumno);
+                        $('#saldoPendiente').val(saldoPendiente); 
+                        $("#sectionPago").hide();
+                        $("#sinDeudas").show();
+                    }else{
+                        var saldoPendiente    = (CursoPrecio - PagosAlumno);
+                        $('#saldoPendiente').val(saldoPendiente); 
+                        $("#sectionPago").show();
+                        $("#sinDeudas").hide();
+                    }
+                                 
                 }
             
-                $('#curso_id').val(alumnoCursoId); 
-                $('#valor_curso').val(CursoPrecio); 
+ 
                 //$('#respuesta').html(CursoPrecio);
-
-                //console.log(JSON.stringify(data.infoAlumno));
-                //console.log(JSON.stringify(data.infoCurso));
 
             }
         });

@@ -87,7 +87,23 @@ $user = auth()->user();
 
 
 
+                    /*
+            $pagosCurso = DB::table('pagos')->sum('aporte')
+            ->where("alumno_id",$request->alumno_id);
 
+            $purchases = DB::table('pagos')
+                ->where('id', '=', $request->alumno_id)
+                ->sum('aporte');
+
+
+                $dataTotal = Pagos::select("*", DB::raw('SUM(aporte) as total'))
+                    ->groupBy("id")
+                    ->having('total', '>', 50)
+                    ->get();
+                */
+
+            // $pagosCurso = DB::table('pagos')->where("alumno_id",$request->alumno_id)->sum('aporte')->get();
+            
 
 <?php
       /*  $("select[name='alumno_idx']").change(function(){

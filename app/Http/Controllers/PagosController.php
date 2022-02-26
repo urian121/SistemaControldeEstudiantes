@@ -13,7 +13,8 @@ class PagosController extends Controller
 
     public function index()
     {
-        //
+        $pagos = Pagos::orderBy('id', 'DESC')->paginate(3);
+        return view('pagos.index', compact('pagos'));       
     }
 
 
@@ -28,37 +29,23 @@ class PagosController extends Controller
 
     public function store(Request $request)
     {
-
         if($request->ajax()){
     
-            $datosAlumno = DB::table('alumnos')->where("id",$request->alumno_id)->get();
+            $datosAlumno = Alumnos::with('curso')->where("id",$request->alumno_id)->first();
+            $idCursoAlumno = $datosAlumno->curso_id;
+            // dd($datosAlumno);
+            $curso = $datosAlumno->curso->nombre_curso;
 
             $valorCurso = DB::table('cursos')->where("id",$request->alumno_id)->get();
 
             $pagosCurso = DB::table('pagos')
             ->where("alumno_id",$request->alumno_id)
-            ->get();
+            ->sum('aporte');
 
-            /*
-            $pagosCurso = DB::table('pagos')->sum('aporte')
-            ->where("alumno_id",$request->alumno_id)
-            ->get();
-
-            $purchases = DB::table('pagos')
-                ->where('id', '=', $request->alumno_id)
-                ->sum('aporte');
-
-
-                $dataTotal = Pagos::select("*", DB::raw('SUM(aporte) as total'))
-                    ->groupBy("id")
-                    ->having('total', '>', 50)
-                    ->get();
-                */
-
-            // $pagosCurso = DB::table('pagos')->where("alumno_id",$request->alumno_id)->sum('aporte')->get();
-
+           
             return response()->json([
-                'infoAlumno'=> $datosAlumno,
+                'infoAlumno'=> $curso,
+                'infoAlumnoIdCurso' => $idCursoAlumno,
                 'infoCurso'=>$valorCurso,
                 'infoPagosCurso' => $pagosCurso
             ]);  
@@ -94,9 +81,8 @@ class PagosController extends Controller
         }
 
         
-        $cursos = Cursos::all();
-        $alumnos = Alumnos::all();
-        return view('pagos.add', compact('alumnos','cursos'));
+        $pagos = Pagos::orderBy('id', 'DESC')->paginate(3);
+        return view('pagos.index', compact('pagos'));    
     }
 
 
