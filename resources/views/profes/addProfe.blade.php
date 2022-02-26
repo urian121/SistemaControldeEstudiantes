@@ -1,7 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-        
+@if ( session('mensaje') )
+<div class="row re" id="proBanner">
+    <div class="col-md-12 grid-margin">
+      <div class="card bg-gradient-primary border-0">
+        <div class="card-body py-3 px-4 d-flex align-items-center justify-content-between flex-wrap">
+          <p class="mb-0 text-white font-weight-medium" style="margin: 0 auto;">
+            <strong>Felicitaciones !</strong>
+            {{ session('mensaje') }}
+          </p>
+          
+          <div class="d-flex">
+            <button id="bannerClose" class="btn border-0 p-0">
+              <i class="mdi mdi-close text-white"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+@endif        
 
 <div class="row justify-content-center">
 
@@ -27,11 +46,11 @@
                 <div class="row  mb-3">
                     <div class="col-md-6">
                         <label for="exampleInputUsername1">Teléfono</label>
-                        <input type="number" name="phone" class="form-control" value="{{ $profe->phone }}" required>
+                        <input type="number" name="phone" class="form-control" value="{{ $profe->phone }}">
                     </div>
                     <div class="col-md-6">
                         <label for="exampleInputUsername1">Correo</label>
-                        <input type="email" name="email" class="form-control" value="{{ $profe->email }}" required>
+                        <input type="email" name="email" class="form-control" value="{{ $profe->email }}">
                     </div>
                 </div>
 
@@ -86,7 +105,7 @@
         <form class="forms-sample" method="post" action="{{ route('profe.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="exampleInputUsername1">Nombre Y Apellido</label>
+                <label>Nombre Y Apellido</label>
                 <input type="text" name="nameFull" class="form-control" required>
             </div>
             <div class="form-group">

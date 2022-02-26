@@ -30,29 +30,79 @@ class PagosController extends Controller
     {
 
         if($request->ajax()){
-            $data = Alumnos::select("id")
-            ->where("id",$request->alumno_id)
+    
+            $datosAlumno = DB::table('alumnos')->where("id",$request->alumno_id)->get();
+
+            $valorCurso = DB::table('cursos')->where("id",$request->alumno_id)->get();
+
+            $pagosCurso = DB::table('pagos')
+            ->where("alumno_id",$request->alumno_id)
             ->get();
 
-            $data1=Alumnos::all();
-
-            $states = DB::table('alumnos')->where("id",$request->alumno_id)->get();
-            //return response()->json($states);
-
-            $alumno = DB::table('alumnos')
+            /*
+            $pagosCurso = DB::table('pagos')->sum('aporte')
+            ->where("alumno_id",$request->alumno_id)
             ->get();
-        
+
+            $purchases = DB::table('pagos')
+                ->where('id', '=', $request->alumno_id)
+                ->sum('aporte');
+
+
+                $dataTotal = Pagos::select("*", DB::raw('SUM(aporte) as total'))
+                    ->groupBy("id")
+                    ->having('total', '>', 50)
+                    ->get();
+                */
+
+            // $pagosCurso = DB::table('pagos')->where("alumno_id",$request->alumno_id)->sum('aporte')->get();
+
             return response()->json([
-                'mensaje'=> $data1
+                'infoAlumno'=> $datosAlumno,
+                'infoCurso'=>$valorCurso,
+                'infoPagosCurso' => $pagosCurso
             ]);  
         }
 
     }
 
 
-    public function show(Request $request)
+    public function guardarPago(Request $request)
     {
 
+        if ($request->hasFile('photo_pago')) {
+            $file = $request->file('photo_pago');  
+            $nombrearchivo = time()."_".$file->getClientOriginalName();  
+            $file->move(public_path('/fotosPagos/'),$nombrearchivo); 
+
+            $data = new Pagos([
+                'alumno_id'=>$request->get('alumno_id'),
+                'curso_id'=>$request->get('curso_id'),
+                'valor_curso'=>$request->get('valor_curso'),
+                'aporte'=>$request->get('aporte'),
+                'photo_pago'=>$nombrearchivo
+            ]);
+            $data->save(); 
+        }else{
+            $data = new Pagos([
+                'alumno_id'=>$request->get('alumno_id'),
+                'curso_id'=>$request->get('curso_id'),
+                'valor_curso'=>$request->get('valor_curso'),
+                'aporte'=>$request->get('aporte')
+            ]);
+            $data->save(); 
+        }
+
+        
+        $cursos = Cursos::all();
+        $alumnos = Alumnos::all();
+        return view('pagos.add', compact('alumnos','cursos'));
+    }
+
+
+    public function show(Request $request)
+    {
+        //
     }
 
 

@@ -18,6 +18,7 @@ Route::resource('curso', CursosController::class)->middleware('auth');
 Route::resource('profe', ProfesoresController::class)->middleware('auth');
 Route::resource('alumno', AlumnosController::class)->middleware('auth');
 Route::resource('pago', PagosController::class)->middleware('auth');
+Route::post('/pagoSave', 'App\Http\Controllers\PagosController@guardarPago')->name("pagoSave")->middleware('auth'); //Guardando Pago
 
 //Route::get('dashboard', 'AppHttpControllersUserController@dashboard')->middleware('auth');
 //Route::get("/gestionarMedicos", [PersonaController::class,"mostrarMedicos"])->name("personaMostrarMedicos")->middleware("auth","firstLogin","role:administrador");

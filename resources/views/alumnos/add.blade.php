@@ -67,12 +67,9 @@
                 </div>
                 <div class="col-md-4">
                     <label class="col-sm-12 col-form-label">Edad del Alumno</label>
-                    <select name="edad_alumno" class="form-control form-control-sm">
-                        <option value="">Seleccione</option>
-                        @for ($a=10; $a <=50; $a++) 
-                            <option value="<?php echo $a; ?>"> <?php echo ($a); ?></option>
-                        @endfor 
-                    </select>
+                    <div class="col-sm-12">
+                      <input type="number" name="edad_alumno" class="form-control"/>
+                    </div>
                 </div>
             </div>
 

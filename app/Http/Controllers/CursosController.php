@@ -68,13 +68,13 @@ class CursosController extends Controller
         $update =0;
         $cursosTable = Cursos::orderBy('id', 'DESC')->paginate(3);
         $cursosTotal = Cursos::all();
-        return view('cursos.add', compact('cursosTable','cursosTotal','update'));  
+$mensaje ="Hola";
+        return view('cursos.add', compact('cursosTable','cursosTotal','update','mensaje'));  
     }
 
 
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-
         $cursos = Cursos::findOrFail($id);
         $cursos->delete();
         return redirect('/curso/create')->with('mensaje', 'El Curso fue Borrado correctamente.');

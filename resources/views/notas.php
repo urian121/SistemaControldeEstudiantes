@@ -90,25 +90,20 @@ $user = auth()->user();
 
 
 <?php
-                    if($request->ajax()){
-           // $countries = DB::table('countries')->get();
-           // return view('users',compact('countries'));
-
-            $data = Alumnos::select("id")
-            ->where("id","LIKE","%{$request->query}%")
-            ->get();
-            return response()->json($data);
-
-
-             $countries = \DB::table('countries')
-            ->get();
-        
-        return view('dropdown', compact('countries'));
-
-
-          $states = \DB::table('states')
-            ->where('country_id', $request->country_id)
-            ->get();
+      /*  $("select[name='alumno_idx']").change(function(){
+      var alumno_id = $(this).val();
+      $.ajax({
+          //url:"{{ route('pago.store') }}",
+         //url: "{{ route('admin.cities.get_by_country') }}?country_id=" + $(this).val(),
+          url: "<?php echo route('pago.store') ?>",
+          method: 'POST',
+          dataType: 'json',
+          data: {alumno_id:alumno_id},
+          success: function(data) {
+            $("#resp").html(data.options);
+          }
+      });
+  }); */
 
             
            /* $countries = DB::table('countries')

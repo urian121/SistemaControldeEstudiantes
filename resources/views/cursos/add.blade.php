@@ -25,6 +25,7 @@
 
 
 
+
 <div class="row justify-content-center">
 @if(($update !=0))
 
@@ -109,6 +110,8 @@
                         </a>
                         @csrf
                         @method('DELETE')
+                        
+                        
                         <button type="submit" class="btn btn-inverse-danger"  style="padding:  8px 5px !important;" title="Borrar Alumno">
                             <i class="mdi mdi-delete-sweep"></i>Borrar
                         </button>
@@ -133,6 +136,15 @@
 
 @endif <!---fin del primer if else -->
 
-
 </div>
+
+
 @endsection
+
+@section('script')
+<script>
+$(function () {
+    console.log('tabla');
+  });
+</script>
+@stop

@@ -22,7 +22,7 @@ class CreatePagosTable extends Migration
 
             $table->integer('valor_curso')->nullable();
             $table->integer('aporte')->nullable();
-            $table->string('photo_pago');
+            $table->string('photo_pago')->nullable();
 
             $table->timestamps();
         });
