@@ -47,14 +47,13 @@
                     <hr>
                 </h5>
                 <h5 class="card-title"><strong>Curso:</strong> 
-                    {{ $alumno->curso_id  }} 
+                    {{ $alumno->curso->nombre_curso  }} 
                     <hr>
                 </h5>
                 <h5 class="card-title"><strong>Profesor:</strong> 
-                    {{ $alumno->profesor_id }} 
+                    {{ $alumno->profesor->nameFull }} 
                     <hr>
                 </h5>
-               
                 <a href="/alumno" class="btn btn-primary">
                     <i class="mdi mdi-undo-variant"></i> Volver
                 </a>

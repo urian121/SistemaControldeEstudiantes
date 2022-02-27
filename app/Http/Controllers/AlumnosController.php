@@ -19,7 +19,6 @@ class AlumnosController extends Controller
     public function index()
     {
         $alumnosTotal = Alumnos::all();
-
         $alumnos = Alumnos::orderBy('id', 'DESC')->paginate(3);
         return view('alumnos.index', compact('alumnos','alumnosTotal'));
 
@@ -112,4 +111,14 @@ class AlumnosController extends Controller
         $alumno->delete();
         return redirect('/alumno')->with('mensaje', 'El alumno fue borrado correctamente.');
     }
+
+
+    public function exportAlumnos()
+    {
+        $alumnos = Alumnos::all();
+        return view('exports.exportAlumnos', compact('alumnos'));     
+    }
+    
+
+
 }

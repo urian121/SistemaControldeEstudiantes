@@ -19,6 +19,9 @@ Route::resource('alumno', AlumnosController::class)->middleware('auth');
 Route::resource('pago', PagosController::class)->middleware('auth');
 Route::post('/pagoSave', 'App\Http\Controllers\PagosController@guardarPago')->name("pagoSave")->middleware('auth'); //Guardando Pago
 
+Route::get('/exportPagos', 'App\Http\Controllers\PagosController@exportPagosAlumnos')->name("export")->middleware('auth');
+Route::get('excel/exportAlumnos', 'App\Http\Controllers\AlumnosController@exportAlumnos')->name("exportAlumnos")->middleware('auth');
+
 
 Route::get('/clear-cache', function () {
     echo Artisan::call('config:clear');

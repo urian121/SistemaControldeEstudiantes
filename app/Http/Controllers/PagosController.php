@@ -85,10 +85,17 @@ class PagosController extends Controller
         return view('pagos.index', compact('pagos'));    
     }
 
-
     public function show(Request $request)
     {
         //
+    }
+
+
+    public function exportPagosAlumnos()
+    {
+        $pagos = Pagos::all();
+        return view('exports.exportPagos', compact('pagos'));        
+
     }
 
 
