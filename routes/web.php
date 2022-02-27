@@ -4,6 +4,7 @@ use App\Http\Controllers\CursosController;
 use App\Http\Controllers\ProfesoresController;
 use App\Http\Controllers\AlumnosController;
 use App\Http\Controllers\PagosController; 
+use App\Http\Controllers\SettingsController; 
 
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,10 @@ Route::post('/pagoSave', 'App\Http\Controllers\PagosController@guardarPago')->na
 
 Route::get('/exportPagos', 'App\Http\Controllers\PagosController@exportPagosAlumnos')->name("export")->middleware('auth');
 Route::get('excel/exportAlumnos', 'App\Http\Controllers\AlumnosController@exportAlumnos')->name("exportAlumnos")->middleware('auth');
+
+
+Route::get('/NewPassword',  [SettingsController::class,'NewPassword'])->name('NewPassword')->middleware('auth');
+Route::post('/change/password',  [SettingsController::class,'changePassword'])->name('changePassword');
 
 
 Route::get('/clear-cache', function () {

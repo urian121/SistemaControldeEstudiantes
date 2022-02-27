@@ -101,8 +101,6 @@ $user = auth()->user();
                     ->having('total', '>', 50)
                     ->get();
                 */
-
-            // $pagosCurso = DB::table('pagos')->where("alumno_id",$request->alumno_id)->sum('aporte')->get();
             
 
 <?php
@@ -166,9 +164,13 @@ $user = auth()->user();
 
         return view('user.index', ['users' => $users]);
 
-        $affected = DB::update('update users set votes = 100 where name = ?', ['John']);
+        DB::table('user')->where('email', $userEmail)->update(array('member_type' => $plan));  
 
+        DB::table('blogs')
+            ->where('id', 1)
+            ->update(array('dtime' => 1398082265));
 
+            
         $last = DB::table('items')->latest()->first();
         $last2 = DB::table('items')->orderBy('id', 'DESC')->first();
         $last3 = DB::table('items')->latest('id')->first();

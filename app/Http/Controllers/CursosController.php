@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use DB;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Cursos;
 
@@ -32,16 +32,12 @@ class CursosController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre_curso' => 'required',
+        $validatedData =  $request->validate([
+            'nombre_curso' => 'required|max:255',
             'precio_curso' => 'required'
         ]);
-
         
-        Cursos::create($request->all());
-
-       // $cursos = Cursos::orderBy('id', 'DESC')->paginate(5);
-        //return view('cursos', compact('cursos'));
+        $guardar = Cursos::create($validatedData);
         return redirect()->route('curso.create')->with('mensaje','Curso Registrado');
         
     }
@@ -58,18 +54,18 @@ class CursosController extends Controller
 
     public function update(Request $request, $id)
     {
-        $curso = Cursos::find($id);
-        $curso->nombre_curso       = $request->nombre_curso;
-        $curso->precio_curso     = $request->precio_curso;
-
-        $curso->save();
+        $validatedData = $request->validate([
+            'nombre_curso' => 'required|max:255',
+            'precio_curso' => 'required'
+        ]);
+        
+        Cursos::whereId($id)->update($validatedData);
 
         /**Cargando datos para redireccionar a la vista con datos predeterminados */
         $update =0;
         $cursosTable = Cursos::orderBy('id', 'DESC')->paginate(3);
         $cursosTotal = Cursos::all();
-$mensaje ="Hola";
-        return view('cursos.add', compact('cursosTable','cursosTotal','update','mensaje'));  
+        return view('cursos.add', compact('cursosTable','cursosTotal','update'));  
     }
 
 
