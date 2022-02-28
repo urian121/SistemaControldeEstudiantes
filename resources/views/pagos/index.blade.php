@@ -4,13 +4,12 @@
         
 
 
-
 @if($pagos->count())
 <div class="col-md-12 grid-margin stretch-card">
 <div class="card">
     <div class="card-body">
     <h4 class="card-title text-center">LISTA DE PAGOS 
-        <a class="btn btn-inverse-primary" href="{{ route('exportPagos') }}"  style="padding: 8px 15px !important;" title="Ver Detalles"> Descargar</a>
+        <a class="btn btn-inverse-primary" href="{{ route('exportPagosAlumnos') }}"  style="padding: 8px 15px !important;" title="Ver Detalles"> Descargar</a>
     </h4>
     <div class="table-responsive">
         <table class="table table-hover">
@@ -50,8 +49,10 @@
         </tbody>
         </table>
 
-            <br><br>
+        <br><br>
+        <div class="form-group text-center mt5">
             {!! $pagos->links() !!}
+        </div>
 
         </div>
     </div>

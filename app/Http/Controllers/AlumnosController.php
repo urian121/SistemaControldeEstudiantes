@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use DB;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Alumnos;
 
@@ -19,7 +19,7 @@ class AlumnosController extends Controller
     public function index()
     {
         $alumnosTotal = Alumnos::all();
-        $alumnos = Alumnos::orderBy('id', 'DESC')->paginate(3);
+        $alumnos = Alumnos::orderBy('id', 'DESC')->paginate(6);
         return view('alumnos.index', compact('alumnos','alumnosTotal'));
 
     }
@@ -94,16 +94,60 @@ class AlumnosController extends Controller
     }
 
     
-    public function edit(Alumnos $alumnos)
+    public function edit($id)
     {
-        //
+
+        $alumno   = Alumnos::findOrFail($id);
+        $cursos   = Cursos::get();
+        $profesores = Profesores::orderBy('id','asc')->get();
+
+        $CursoAsignadoBD = $alumno->curso_id;
+        $ProfeAsignadoBD = $alumno->profesor_id;
+
+        return view('alumnos.update',compact('alumno','cursos','profesores','CursoAsignadoBD','ProfeAsignadoBD'));
     }
 
-    
-    public function update(Request $request, Alumnos $alumnos)
+
+    public function update(Request $request, $id)
     {
-        //
+  
+        if ($request->hasFile('foto_estudiante')) {
+            $file = $request->file('foto_estudiante');  
+            $nombrearchivo = time()."_".$file->getClientOriginalName();  
+            $file->move(public_path('/fotosAlumnos/'),$nombrearchivo); 
+
+            $data = new Alumnos([
+                'nameFullAlumno'=>$request->get('nameFullAlumno'),
+                'cedula_alumno'=>$request->get('cedula_alumno'),
+                'email_alumno'=>$request->get('email_alumno'),
+                'ciudad'=>$request->get('ciudad'),
+                'phone_alumno'=>$request->get('phone_alumno'),
+                'edad_alumno'=>$request->get('edad_alumno'),
+                'addres'=>$request->get('addres'),
+                'foto_estudiante'=>$nombrearchivo,
+                'curso_id'=>$request->get('curso_id'),
+                'profesor_id'=>$request->get('profesor_id'),
+            ]);
+            $data->save(); 
+        }else{
+            $data = new Alumnos([
+                'nameFullAlumno'=>$request->get('nameFullAlumno'),
+                'cedula_alumno'=>$request->get('cedula_alumno'),
+                'email_alumno'=>$request->get('email_alumno'),
+                'ciudad'=>$request->get('ciudad'),
+                'phone_alumno'=>$request->get('phone_alumno'),
+                'edad_alumno'=>$request->get('edad_alumno'),
+                'addres'=>$request->get('addres'),
+                'curso_id'=>$request->get('curso_id'),
+                'profesor_id'=>$request->get('profesor_id'),
+            ]);
+            $data->save(); 
+        } 
+
+        return redirect('alumno/')->with('updateAlumno','Alumno actualizado Correctamente.');
     }
+
+
 
     public function destroy(Request $request, $id)
     {

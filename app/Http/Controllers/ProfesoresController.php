@@ -18,7 +18,7 @@ class ProfesoresController extends Controller
     {
         $update =0;
         $cursos = Cursos::get();
-        $profes = Profesores::orderBy('id', 'DESC')->paginate(3);
+        $profes = Profesores::orderBy('id', 'DESC')->paginate(6);
         return view('profes.addProfe', compact('profes','cursos','update'));
     }
 

@@ -13,7 +13,7 @@ class PagosController extends Controller
 
     public function index()
     {
-        $pagos = Pagos::orderBy('id', 'DESC')->paginate(3);
+        $pagos = Pagos::orderBy('id', 'DESC')->paginate(6);
         return view('pagos.index', compact('pagos'));       
     }
 

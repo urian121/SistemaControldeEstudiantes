@@ -191,9 +191,11 @@
         </tbody>
         </table>
 
-            <br><br>
+        <br><br>
+        <div class="form-group text-center mt5">
             {!! $profes->links() !!}
-
+        </div>
+           
         </div>
     </div>
 </div>

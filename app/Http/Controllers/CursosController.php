@@ -24,7 +24,7 @@ class CursosController extends Controller
     public function create()
     {
         $update =0;
-        $cursosTable = Cursos::orderBy('id', 'DESC')->paginate(3);
+        $cursosTable = Cursos::orderBy('id', 'DESC')->paginate(6);
         $cursosTotal = Cursos::all();
         // $table->timestamps();
         return view('cursos.add', compact('cursosTable','cursosTotal','update'));        
@@ -34,7 +34,11 @@ class CursosController extends Controller
     {
         $validatedData =  $request->validate([
             'nombre_curso' => 'required|max:255',
-            'precio_curso' => 'required'
+            'precio_curso' => 'required|min:3|max:50'
+        ],
+        [
+            'nombre_curso.required' => 'Nombre del Curso es obligatorio',
+            'precio_curso.required' => 'El Precio es obligatorio'
         ]);
         
         $guardar = Cursos::create($validatedData);
@@ -46,7 +50,6 @@ class CursosController extends Controller
       {
         $update =1;
         $curso       = Cursos::findOrFail($id);
-
         $cursosTable = Cursos::orderBy('id', 'DESC')->paginate(3);
         $cursosTotal = Cursos::all();
         return view('cursos.add', compact('curso','cursosTable','cursosTotal','update'));

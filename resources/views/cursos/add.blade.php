@@ -25,17 +25,6 @@
 
 
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-    </div><br />
-@endif
-
-
 
 <div class="row justify-content-center">
 @if(($update !=0))
@@ -69,7 +58,9 @@
         </form>
         </div>
     </div>
-</div> 
+</div>
+
+
 @else
 <div class="col-md-4 grid-margin stretch-card">
     <div class="card">
@@ -77,13 +68,24 @@
         <h2 class="card-title text-center">REGISTRAR NUEVO CURSO <hr></h2>
         <form class="forms-sample" method="post" action="{{ route('curso.store') }}">
             @csrf
+
             <div class="form-group">
                 <label for="exampleInputUsername1">Nombre del Curso</label>
                 <input type="text" name="nombre_curso" class="form-control" required>
+                @if ($errors->has('nombre_curso'))
+                <div class="alert alert-danger">
+                    <span class="text-danger">{{ $errors->first('nombre_curso') }}</span>
+                </div>
+                @endif
             </div>
             <div class="form-group">
                 <label for="exampleInputUsername1">Valor del Curso</label>
                 <input type="number" name="precio_curso" class="form-control" required>
+                @if ($errors->has('precio_curso'))
+                <div class="alert alert-danger">
+                    <span class="text-danger">{{ $errors->first('precio_curso') }}</span>
+                </div>
+                @endif
             </div>
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary mr-2 mb-3">Registrar</button>
@@ -133,8 +135,10 @@
         </tbody>
         </table>
 
-            <br><br>
+        <br><br>
+        <div class="form-group text-center mt5">
             {!! $cursosTable->links() !!}
+        </div>
 
         </div>
     </div>
