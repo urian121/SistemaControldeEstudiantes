@@ -34,9 +34,14 @@ class PagosController extends Controller
             $datosAlumno = Alumnos::with('curso')->where("id",$request->alumno_id)->first();
             $idCursoAlumno = $datosAlumno->curso_id;
             // dd($datosAlumno);
+            //dd($valorCurso);
+            // dump($valorCurso);
+             //var_dump($valorCurso);
+             //print_r($valorCurso);
+
             $curso = $datosAlumno->curso->nombre_curso;
 
-            $valorCurso = DB::table('cursos')->where("id",$request->alumno_id)->get();
+            $valorCurso = DB::table('cursos')->where("id",$idCursoAlumno)->get();
 
             $pagosCurso = DB::table('pagos')
             ->where("alumno_id",$request->alumno_id)

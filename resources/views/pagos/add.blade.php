@@ -106,10 +106,11 @@
             data:{ "alumno_id" : alumno_id },
             success:function(data){
                // $('#resp').html(JSON.stringify(data.infoAlumno));
-                var alumnoCurso     = ((data.infoAlumno));
-                var CursoPrecio     = (JSON.stringify(data.infoCurso[0].precio_curso));
-                var PagosAlumno     = (data.infoPagosCurso);
-                var idCursoAlumno   =  (data.infoAlumnoIdCurso); 
+                var alumnoCurso         = (data.infoAlumno);
+                var CursoPrecioString   = (JSON.stringify(data.infoCurso[0].precio_curso));
+                var CursoPrecio         = (CursoPrecioString.replace(/['"]+/g, '')); //Quitando comillas del mi string
+                var PagosAlumno         = (data.infoPagosCurso);
+                var idCursoAlumno       =  (data.infoAlumnoIdCurso); 
 
                 $('#IdCurso').html(alumnoCurso); 
                 $('#curso_id').val(idCursoAlumno); 

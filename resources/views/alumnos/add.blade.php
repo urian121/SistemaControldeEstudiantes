@@ -2,26 +2,6 @@
 
 @section('content')
 
-@if ( session('mensaje') )
-<div class="row re" id="proBanner">
-    <div class="col-md-12 grid-margin">
-      <div class="card bg-gradient-primary border-0">
-        <div class="card-body py-3 px-4 d-flex align-items-center justify-content-between flex-wrap">
-          <p class="mb-0 text-white font-weight-medium" style="margin: 0 auto;">
-            <strong>Felicitaciones !</strong>
-            {{ session('mensaje') }}
-          </p>
-          
-          <div class="d-flex">
-            <button id="bannerClose" class="btn border-0 p-0">
-              <i class="mdi mdi-close text-white"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-@endif
 
 <div class="row justify-content-center">
 <div class="col-md-12 grid-margin stretch-card">

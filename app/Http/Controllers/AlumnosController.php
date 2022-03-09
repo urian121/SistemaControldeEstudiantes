@@ -82,7 +82,7 @@ class AlumnosController extends Controller
             $data->save(); 
         } 
 
-        return redirect('/alumno/create')->with('mensaje','Alumno Registrado Correctamente.');
+        return redirect('/alumno')->with('mensaje','Alumno Registrado Correctamente.');
 
     }
 
@@ -116,32 +116,31 @@ class AlumnosController extends Controller
             $nombrearchivo = time()."_".$file->getClientOriginalName();  
             $file->move(public_path('/fotosAlumnos/'),$nombrearchivo); 
 
-            $data = new Alumnos([
-                'nameFullAlumno'=>$request->get('nameFullAlumno'),
-                'cedula_alumno'=>$request->get('cedula_alumno'),
-                'email_alumno'=>$request->get('email_alumno'),
-                'ciudad'=>$request->get('ciudad'),
-                'phone_alumno'=>$request->get('phone_alumno'),
-                'edad_alumno'=>$request->get('edad_alumno'),
-                'addres'=>$request->get('addres'),
-                'foto_estudiante'=>$nombrearchivo,
-                'curso_id'=>$request->get('curso_id'),
-                'profesor_id'=>$request->get('profesor_id'),
-            ]);
-            $data->save(); 
+            $alumno = Alumnos::findOrFail($id);
+            $alumno->nameFullAlumno         = $request->nameFullAlumno;
+            $alumno->cedula_alumno          = $request->cedula_alumno;
+            $alumno->email_alumno           = $request->email_alumno;
+            $alumno->ciudad                 = $request->ciudad;
+            $alumno->phone_alumno           = $request->phone_alumno;
+            $alumno->edad_alumno            = $request->edad_alumno;
+            $alumno->addres                 = $request->addres;
+            $alumno->foto_estudiante        = $request->$nombrearchivo;
+            $alumno->curso_id               = $request->curso_id;
+            $alumno->profesor_id            = $request->profesor_id;
+
+            $alumno->save(); 
         }else{
-            $data = new Alumnos([
-                'nameFullAlumno'=>$request->get('nameFullAlumno'),
-                'cedula_alumno'=>$request->get('cedula_alumno'),
-                'email_alumno'=>$request->get('email_alumno'),
-                'ciudad'=>$request->get('ciudad'),
-                'phone_alumno'=>$request->get('phone_alumno'),
-                'edad_alumno'=>$request->get('edad_alumno'),
-                'addres'=>$request->get('addres'),
-                'curso_id'=>$request->get('curso_id'),
-                'profesor_id'=>$request->get('profesor_id'),
-            ]);
-            $data->save(); 
+            $alumno = Alumnos::findOrFail($id);
+            $alumno->nameFullAlumno         = $request->nameFullAlumno;
+            $alumno->cedula_alumno          = $request->cedula_alumno;
+            $alumno->email_alumno           = $request->email_alumno;
+            $alumno->ciudad                 = $request->ciudad;
+            $alumno->phone_alumno           = $request->phone_alumno;
+            $alumno->edad_alumno            = $request->edad_alumno;
+            $alumno->addres                 = $request->addres;
+            $alumno->curso_id               = $request->curso_id;
+            $alumno->profesor_id            = $request->profesor_id;
+            $alumno->save(); 
         } 
 
         return redirect('alumno/')->with('updateAlumno','Alumno actualizado Correctamente.');

@@ -170,6 +170,26 @@ $user = auth()->user();
             ->where('id', 1)
             ->update(array('dtime' => 1398082265));
 
+
+            /*
+            DB::table('posts')
+                ->select('postTitle', 'postBody')
+                ->whereRaw('id =' . $id)->first(); 
+            */
+            /*
+                    $users = User::select("*")
+                        ->where([
+                            ["status", "=", 1],
+                            ["email", "=", "yemmerich@example.net"]
+                        ])
+                        ->get();
+                        */
+                /*
+                DB::table('posts')
+                    ->select('postTitle', 'postBody')
+                    ->whereRaw('id = ?', $id)->first();
+                */
+    
             
         $last = DB::table('items')->latest()->first();
         $last2 = DB::table('items')->orderBy('id', 'DESC')->first();

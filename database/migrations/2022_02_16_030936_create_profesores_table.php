@@ -13,8 +13,8 @@ class CreateProfesoresTable extends Migration
         Schema::create('profesores', function (Blueprint $table) {
             $table->id();
             $table->string('nameFull',150)->nullable();
-            $table->integer('cedula')->unsigned();
-            $table->integer('phone')->nullable();
+            $table->string('cedula',30)->nullable();
+            $table->string('phone',20)->nullable();
             $table->string('email')->nullable();
             $table->string('profesion',150)->nullable();
             $table->string('foto_profesor',50)->nullable();
