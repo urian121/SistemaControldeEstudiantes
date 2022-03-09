@@ -34,11 +34,13 @@ class CursosController extends Controller
     {
         $validatedData =  $request->validate([
             'nombre_curso' => 'required|max:255',
-            'precio_curso' => 'required|min:3|max:50'
+            'precio_curso' => 'required|min:3|max:50',
+            'dateCurso' =>'required'
         ],
         [
             'nombre_curso.required' => 'Nombre del Curso es obligatorio',
-            'precio_curso.required' => 'El Precio es obligatorio'
+            'precio_curso.required' => 'El Precio es obligatorio',
+            'dateCurso.required' => 'La fecha es obligatorio'
         ]);
         
         $guardar = Cursos::create($validatedData);
@@ -59,7 +61,8 @@ class CursosController extends Controller
     {
         $validatedData = $request->validate([
             'nombre_curso' => 'required|max:255',
-            'precio_curso' => 'required'
+            'precio_curso' => 'required',
+            'dateCurso' =>'required'
         ]);
         
         Cursos::whereId($id)->update($validatedData);

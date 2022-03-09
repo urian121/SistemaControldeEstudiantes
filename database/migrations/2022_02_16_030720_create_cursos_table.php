@@ -13,6 +13,7 @@ class CreateCursosTable extends Migration
             $table->id();
             $table->string('nombre_curso', 250)->nullable();
             $table->unsignedInteger('precio_curso');
+            $table->string('dateCurso', 250)->nullable();
             $table->timestamps();
         });
     }

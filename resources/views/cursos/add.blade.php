@@ -44,6 +44,10 @@
                 <label for="exampleInputUsername1">Valor del Curso</label>
                 <input type="number" name="precio_curso" class="form-control" value="{{ $curso->precio_curso }}" required>
             </div>
+            <div class="form-group">
+                <label for="exampleInputUsername1">Fecha creación del Curso</label>
+                <input type="date" name="dateCurso" class="form-control" value="{{ $curso->dateCurso }}" required>
+            </div>
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary mr-2 mb-3">Actualizar Curso</button>
                 <a href="/"  class="btn btn-inverse-dark btn-fw mb-3">Cancelar</a>
@@ -87,6 +91,15 @@
                 </div>
                 @endif
             </div>
+            <div class="form-group">
+                <label for="exampleInputUsername1">Fecha creación del Curso</label>
+                <input type="date" name="dateCurso" class="form-control" required>
+                @if ($errors->has('dateCurso'))
+                <div class="alert alert-danger">
+                    <span class="text-danger">{{ $errors->first('dateCurso') }}</span>
+                </div>
+                @endif
+            </div>
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary mr-2 mb-3">Registrar</button>
                 <a href="/"  class="btn btn-inverse-dark btn-fw mb-3">Cancelar</a>
@@ -108,6 +121,7 @@
             <tr>
             <th>Curso</th>
             <th>Valor</th>
+            <th>Fecha</th>
             <th>Acción</th>
             </tr>
         </thead>
@@ -116,6 +130,9 @@
             <tr>
                 <td>{{ $cur->nombre_curso }}</td>
                 <td>{{ $cur->precio_curso }}</td>
+                <td>
+                     {{ date('d-m-Y', strtotime($cur->dateCurso))  }}
+                    </td>
                 <td style="float: right">
                     <form action="{{ route('curso.destroy',$cur->id) }}" method="POST">
                         <a class="btn btn-inverse-success" href="{{ route('curso.edit',$cur->id) }}"  style="padding: 8px 5px !important;" title="Actualizar Registro">
@@ -123,7 +140,6 @@
                         </a>
                         @csrf
                         @method('DELETE')
-                        
                         
                         <button type="submit" class="btn btn-inverse-danger"  style="padding:  8px 5px !important;" title="Borrar Alumno">
                             <i class="mdi mdi-delete-sweep"></i>Borrar

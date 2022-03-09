@@ -29,6 +29,22 @@
                     {{ $alumno->edad_alumno }} 
                     <hr>
                 </h5>
+                <h5 class="card-title"><strong>Lugar de expedicion del Documento:</strong> 
+                    {{ $alumno->lugar_exp_document }} 
+                    <hr>
+                </h5>
+                <h5 class="card-title"><strong>Referencia familiar:</strong> 
+                    {{ $alumno->ref_family }} 
+                    <hr>
+                </h5>
+                <h5 class="card-title"><strong>Telefomo de la referencia familiar:</strong> 
+                    {{ $alumno->phone_ref_family }} 
+                    <hr>
+                </h5>
+                <h5 class="card-title"><strong>Talla del uniforme:</strong> 
+                    {{ $alumno->talla_uniforme }} 
+                    <hr>
+                </h5>
                 <h5 class="card-title"><strong>Correo:</strong> 
                     {{ $alumno->email_alumno }} 
                     <hr>
@@ -52,6 +68,10 @@
                 </h5>
                 <h5 class="card-title"><strong>Profesor:</strong> 
                     {{ $alumno->profesor->nameFull }} 
+                    <hr>
+                </h5>
+                <h5 class="card-title"><strong>Observeción:</strong> 
+                    {{ $alumno->profesor->observ }} 
                     <hr>
                 </h5>
                 <a href="/alumno" class="btn btn-primary">

@@ -4,19 +4,18 @@
         
 
 <div class="row justify-content-center">
-
     <div class="col-md-10 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
             <h2 class="card-title text-center">REGISTRAR NUEVO PAGO <hr></h2>
-            <form class="forms-sample" method="post" action="{{ route('pagoSave') }}" enctype="multipart/form-data">
+            <form id="miForm" class="forms-sample" method="post" action="{{ route('pagoSave') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label  for="alumno_id">Datos del Alumno <em>(Nombre y Cédula)</em></label>
                         <p style="background-color: #e9ecef !important;">
-                        <select name="alumno_id" id="alumno_id" style="background-color: #e9ecef !important;" class="selectpicker des">
-                            <option value="">Seleccione</option>
+                        <select name="alumno_id" id="alumno_id" style="background-color: #e9ecef !important;" class="selectpicker des" data-show-subtext="false" data-live-search="true" style="-webkit-appearance: none;">
+                            <option value="0">Seleccione</option>
                             @foreach ($alumnos as $alumno)
                                 <option value="{{ $alumno->id }}"> {{ $alumno->nameFullAlumno }} :: {{ $alumno->phone_alumno }}</option>
                             @endforeach
@@ -98,6 +97,12 @@
     $('select#alumno_id').on('change',function(){
         var alumno_id = $(this).val();
         var dataString   = 'alumno_id=' + alumno_id;
+        if(alumno_id ==0){
+            $("#miForm")[0].reset();
+            
+            $("#IdCurso").html('<p></p>');
+
+        }
        
         $.ajax({
             type:'POST',

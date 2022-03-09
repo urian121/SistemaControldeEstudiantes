@@ -25,14 +25,42 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <label class="col-sm-6 col-form-label">Correo</label>
+                    <label class="col-sm-6 col-form-label">Lugar de expedición de Documento</label>
                     <div class="col-sm-12">
-                      <input type="email" name="email_alumno" class="form-control" />
+                      <input type="text" name="lugar_exp_document" class="form-control" />
                     </div>
                 </div>
               </div>
 
             <div class="row">
+                <div class="col-md-4">
+                    <label class="col-sm-6 col-form-label">Referencia Familiar</label>
+                    <div class="col-sm-12">
+                      <input type="text" name="ref_family" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="col-sm-6 col-form-label">Celular de la referencia familiar</label>
+                    <div class="col-sm-12">
+                      <input type="number" name="phone_ref_family" class="form-control"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="col-sm-6 col-form-label">Talla del Uniforme</label>
+                    <div class="col-sm-12">
+                      <input type="number" name="talla_uniforme" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="col-sm-6 col-form-label">Correo del Alumno</label>
+                    <div class="col-sm-12">
+                      <input type="text" name="email_alumno" class="form-control" />
+                    </div>
+                </div>
+
                 <div class="col-md-4">
                     <label class="col-sm-6 col-form-label">Ciudad</label>
                     <div class="col-sm-12">
@@ -45,15 +73,15 @@
                       <input type="number" name="phone_alumno" class="form-control"/>
                     </div>
                 </div>
+            </div>
+
+            <div class="row">
                 <div class="col-md-4">
                     <label class="col-sm-12 col-form-label">Edad del Alumno</label>
                     <div class="col-sm-12">
                       <input type="number" name="edad_alumno" class="form-control"/>
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
                 <div class="col-md-4">
                     <label class="col-sm-12 col-form-label">Dirección</label>
                     <div class="col-sm-12">
@@ -69,6 +97,9 @@
                         @endforeach
                     </select>
                 </div>
+            </div>
+
+            <div class="row mb-5">
                 <div class="col-md-4">
                     <label class="col-sm-12 col-form-label">Asignar Profesor</label>
                     <select name="profesor_id" class="form-control form-control-sm">
@@ -78,13 +109,15 @@
                         @endforeach
                     </select>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-md-4">
                     <label class="col-sm-6 col-form-label">Foto del Alumno</label>
                     <div class="col-sm-9">
                       <input type="file" name="foto_estudiante" class="form-control" />
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="col-sm-6 col-form-label">Observación</label>
+                    <textarea name="observ" class="form-control" rows="4" cols="50"></textarea>
                 </div>
             </div>
              

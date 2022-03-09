@@ -54,12 +54,17 @@ class AlumnosController extends Controller
             $data = new Alumnos([
                 'nameFullAlumno'=>$request->get('nameFullAlumno'),
                 'cedula_alumno'=>$request->get('cedula_alumno'),
+                'lugar_exp_document'=>$request->get('lugar_exp_document'),
+                'ref_family'=>$request->get('ref_family'),
+                'phone_ref_family'=>$request->get('phone_ref_family'),
+                'talla_uniforme'=>$request->get('talla_uniforme'),
                 'email_alumno'=>$request->get('email_alumno'),
                 'ciudad'=>$request->get('ciudad'),
                 'phone_alumno'=>$request->get('phone_alumno'),
                 'edad_alumno'=>$request->get('edad_alumno'),
                 'addres'=>$request->get('addres'),
                 'foto_estudiante'=>$nombrearchivo,
+                'observ'=>$request->get('observ'),
                 'curso_id'=>$request->get('curso_id'),
                 'profesor_id'=>$request->get('profesor_id'),
                  
@@ -70,11 +75,16 @@ class AlumnosController extends Controller
             $data = new Alumnos([
                 'nameFullAlumno'=>$request->get('nameFullAlumno'),
                 'cedula_alumno'=>$request->get('cedula_alumno'),
+                'lugar_exp_document'=>$request->get('lugar_exp_document'),
+                'ref_family'=>$request->get('ref_family'),
+                'phone_ref_family'=>$request->get('phone_ref_family'),
+                'talla_uniforme'=>$request->get('talla_uniforme'),
                 'email_alumno'=>$request->get('email_alumno'),
                 'ciudad'=>$request->get('ciudad'),
                 'phone_alumno'=>$request->get('phone_alumno'),
                 'edad_alumno'=>$request->get('edad_alumno'),
                 'addres'=>$request->get('addres'),
+                'observ'=>$request->get('observ'),
                 'curso_id'=>$request->get('curso_id'),
                 'profesor_id'=>$request->get('profesor_id'),
                  
@@ -119,12 +129,17 @@ class AlumnosController extends Controller
             $alumno = Alumnos::findOrFail($id);
             $alumno->nameFullAlumno         = $request->nameFullAlumno;
             $alumno->cedula_alumno          = $request->cedula_alumno;
+            $alumno->lugar_exp_document     = $request->lugar_exp_document;
+            $alumno->ref_family             = $request->ref_family;
+            $alumno->phone_ref_family       = $request->phone_ref_family;
+            $alumno->talla_uniforme         = $request->talla_uniforme;
             $alumno->email_alumno           = $request->email_alumno;
             $alumno->ciudad                 = $request->ciudad;
             $alumno->phone_alumno           = $request->phone_alumno;
             $alumno->edad_alumno            = $request->edad_alumno;
             $alumno->addres                 = $request->addres;
             $alumno->foto_estudiante        = $request->$nombrearchivo;
+            $alumno->observ                 = $request->observ;
             $alumno->curso_id               = $request->curso_id;
             $alumno->profesor_id            = $request->profesor_id;
 
@@ -133,11 +148,16 @@ class AlumnosController extends Controller
             $alumno = Alumnos::findOrFail($id);
             $alumno->nameFullAlumno         = $request->nameFullAlumno;
             $alumno->cedula_alumno          = $request->cedula_alumno;
+            $alumno->lugar_exp_document     = $request->lugar_exp_document;
+            $alumno->ref_family             = $request->ref_family;
+            $alumno->phone_ref_family       = $request->phone_ref_family;
+            $alumno->talla_uniforme         = $request->talla_uniforme;
             $alumno->email_alumno           = $request->email_alumno;
             $alumno->ciudad                 = $request->ciudad;
             $alumno->phone_alumno           = $request->phone_alumno;
             $alumno->edad_alumno            = $request->edad_alumno;
             $alumno->addres                 = $request->addres;
+            $alumno->observ                 = $request->observ;
             $alumno->curso_id               = $request->curso_id;
             $alumno->profesor_id            = $request->profesor_id;
             $alumno->save(); 

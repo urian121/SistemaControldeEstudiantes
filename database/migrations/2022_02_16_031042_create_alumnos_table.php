@@ -13,12 +13,17 @@ class CreateAlumnosTable extends Migration
             $table->id();
             $table->string('nameFullAlumno',150)->nullable();
             $table->string('cedula_alumno',50)->nullable();
+            $table->string('lugar_exp_document',250)->nullable();
+            $table->string('ref_family',250)->nullable();
+            $table->string('phone_ref_family',50)->nullable();
+            $table->string('talla_uniforme',250)->nullable();
             $table->string('email_alumno')->nullable();
             $table->string('ciudad', 150)->nullable();
             $table->string('phone_alumno')->nullable();
             $table->string('edad_alumno')->nullable();
             $table->text('addres')->nullable();
             $table->string('foto_estudiante',50)->nullable();
+            $table->text('observ')->nullable();
 
             
             $table->foreignId('curso_id')
