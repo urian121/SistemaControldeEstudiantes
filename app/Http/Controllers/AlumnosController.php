@@ -92,7 +92,7 @@ class AlumnosController extends Controller
             $data->save(); 
         } 
 
-        return redirect('/alumno')->with('mensaje','Alumno Registrado Correctamente.');
+        return redirect('/alumno')->with('mensajeRegistro','Alumno Registrado Correctamente.');
 
     }
 
@@ -172,7 +172,7 @@ class AlumnosController extends Controller
     {
         $alumno = Alumnos::findOrFail($id);
         $alumno->delete();
-        return redirect('/alumno')->with('mensaje', 'El alumno fue borrado correctamente.');
+        return redirect('/alumno')->with('mensajeBorrar', 'El alumno fue borrado correctamente.');
     }
 
 

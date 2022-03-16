@@ -122,6 +122,7 @@
                     <div class="row text-center mb-4 mt-5">
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-primary" id="formSubmit">Guardar Cambios</button>
+                            <a href="/"  class="btn btn-inverse-dark btn-fw mb-3">Cancelar</a>
                         </div>
                     </div>
 

@@ -26,7 +26,6 @@ class CursosController extends Controller
         $update =0;
         $cursosTable = Cursos::orderBy('id', 'DESC')->paginate(6);
         $cursosTotal = Cursos::all();
-        // $table->timestamps();
         return view('cursos.add', compact('cursosTable','cursosTotal','update'));        
     }
 
@@ -44,7 +43,7 @@ class CursosController extends Controller
         ]);
         
         $guardar = Cursos::create($validatedData);
-        return redirect()->route('curso.create')->with('mensaje','Curso Registrado');
+        return redirect()->route('curso.create')->with('msjRegist','Curso Registrado');
         
     }
 
@@ -79,6 +78,6 @@ class CursosController extends Controller
     {
         $cursos = Cursos::findOrFail($id);
         $cursos->delete();
-        return redirect('/curso/create')->with('mensaje', 'El Curso fue Borrado correctamente.');
+        return redirect('/curso/create')->with('msjDelete', 'El Curso fue Borrado correctamente.');
     }
 }

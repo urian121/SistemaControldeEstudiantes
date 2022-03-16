@@ -54,7 +54,7 @@ class ProfesoresController extends Controller
             $data->save(); 
         }
 
-        return redirect('/profe/create')->with('mensaje','Profesor Guardado Satisfactoriamente');
+        return redirect('/profe/create')->with('RegisterProfe','Profesor Guardado Satisfactoriamente');
     }
 
     public function show(Request $request, $id)
