@@ -20,7 +20,7 @@ class SettingsController extends Controller
 
     public function changePassword(Request $request){    
         
-        $user      = Auth::user();
+        $user           = Auth::user();
         $userId         = $user->id;
         $userEmail      = $user->email;
         $userPassword   = $user->password;

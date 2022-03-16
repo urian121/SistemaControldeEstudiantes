@@ -64,7 +64,13 @@
                         <select name="curso_id" class="form-control form-control-sm">
                             <option value="">Seleccione</option>
                             @foreach ($cursos as $curso)
-                                <option value="{{ $curso->id }}"> {{ $curso->nombre_curso }}</option>
+
+                                @if ($curso->id ==$profeidCurso)
+                                <option value="{{ $curso->id }}" selected>{{ $curso->nombre_curso }}</option>
+                                @else
+                                    <option value="{{ $curso->id }}">{{ $curso->nombre_curso }}</option>  
+                                @endif
+                                
                             @endforeach
                         </select>
                     </div>

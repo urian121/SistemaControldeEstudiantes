@@ -95,9 +95,8 @@
                             @if ($curso->id ==$CursoAsignadoBD)
                               <option value="{{ $curso->id }}" selected>{{ $curso->nombre_curso }}</option>
                             @else
-                              
+                              <option value="{{ $curso->id }}">{{ $curso->nombre_curso }}</option>
                             @endif
-                            <option value="{{ $curso->id }}">{{ $curso->nombre_curso }}</option>
                        
                         @endforeach
                     </select>

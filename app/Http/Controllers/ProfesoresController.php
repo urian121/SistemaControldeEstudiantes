@@ -68,8 +68,10 @@ class ProfesoresController extends Controller
     {
         $update =1;
         $profe = Profesores::findOrFail($id);
+        $profeidCurso = $profe->curso_id;
         $cursos = Cursos::all();
-        return view('profes.addProfe', compact('profe','cursos','update'));  
+
+        return view('profes.addProfe', compact('profe','cursos','update','profeidCurso'));  
 
     }
 
@@ -112,11 +114,17 @@ class ProfesoresController extends Controller
     }
 
 
-    public function destroy(Profesores $profesores)
-    {
-        $profesores->delete();
-        return redirect()->route('profe.create')->with('success','Post deleted successfully');
+    public function destroy(Profesores $profesores, $id){
 
+        $profes = Profesores::findOrFail($id);
+        $profes->delete($id);
+
+        $update =0;
+        $cursos = Cursos::get();
+        $profes = Profesores::orderBy('id', 'DESC')->paginate(6);
+
+        $successDelete ="Sede Borrada correctamente.";
+        return view('profes.sedes.addSede', compact('successDelete','profes','cursos','update'));
     }
 
 }
