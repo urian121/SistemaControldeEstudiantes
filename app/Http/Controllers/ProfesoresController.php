@@ -124,7 +124,7 @@ class ProfesoresController extends Controller
         $profes = Profesores::orderBy('id', 'DESC')->paginate(6);
 
         $successDelete ="Sede Borrada correctamente.";
-        return view('profes.sedes.addSede', compact('successDelete','profes','cursos','update'));
+        return view('profes.addProfe', compact('successDelete','profes','cursos','update'));
     }
 
 }

@@ -129,7 +129,7 @@
                   
               </div>
               <div class="col-md-2">
-                  <label for="exampleInputUsername1">Cambiar Foto del Alumno</label>
+                  <label for="exampleInputUsername1">Cambiar Foto</label>
                   <input type="file" name="foto_estudiante" class="form-control">
               </div>
               <div class="col-md-4">
