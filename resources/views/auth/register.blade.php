@@ -9,7 +9,7 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo text-center">
-                <img src="{{ asset('images/logo.jpg') }}" alt="logo" style="width:80px;">
+                <img src="{{ asset('images/logo.png') }}" alt="logo" style="width:80px;">
               </div>
               <h4 class="text-center">Crear cuenta de Usuario</h4>
               

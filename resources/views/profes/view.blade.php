@@ -2,6 +2,7 @@
 
 @section('content')
 
+@include('mensajes')
 
 <div class="row justify-content-center">
     <div class="col-md-12 grid-margin stretch-card">
@@ -42,7 +43,7 @@
                     <hr>
                 </h5>
                 
-                <h5 class="card-title"><strong>Profeción:</strong> 
+                <h5 class="card-title"><strong>Profesión:</strong> 
                     {{ $prof->profesion }} 
                     <hr>
                 </h5>

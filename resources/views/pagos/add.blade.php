@@ -2,6 +2,7 @@
 
 @section('content')
         
+@include('mensajes')
 
 <div class="row justify-content-center">
     <div class="col-md-10 grid-margin stretch-card">
@@ -99,14 +100,12 @@
         var dataString   = 'alumno_id=' + alumno_id;
         if(alumno_id ==0){
             $("#miForm")[0].reset();
-            
             $("#IdCurso").html('<p></p>');
 
         }
        
         $.ajax({
             type:'POST',
-            //dataType: 'json',
             url:"{{ route('pago.store') }}",
             data:{ "alumno_id" : alumno_id },
             success:function(data){
@@ -124,8 +123,7 @@
                 //Validando si existe algun pago que ha realizado el Alumno para este curso
                 if(!PagosAlumno.length) { //No ha realizado ningun pago para ste curso
                     $('#saldoPendiente').val(CursoPrecio); 
-    
-                }else{ //Si ha realizado al menos un pago para este curso
+                    }else{ //Si ha realizado al menos un pago para este curso
 
                     if(CursoPrecio == PagosAlumno){
                         var saldoPendiente    = (CursoPrecio - PagosAlumno);
@@ -138,17 +136,9 @@
                         $("#sectionPago").show();
                         $("#sinDeudas").hide();
                     }
-                                 
                 }
-            
- 
-                //$('#respuesta').html(CursoPrecio);
-
             }
         });
     });
-
-
-
 </script>
 @endsection
