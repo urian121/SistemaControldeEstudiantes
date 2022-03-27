@@ -48,7 +48,7 @@
                     <hr>
                 </h5>
                 <h5 class="card-title"><strong>Curso asignado:</strong> 
-                    {{ $prof->curso->nombre_curso }} 
+                    {{ $prof->curso->nombre_curso ?? 'Curso borrado'}} 
                     <hr>
                 </h5>
                  

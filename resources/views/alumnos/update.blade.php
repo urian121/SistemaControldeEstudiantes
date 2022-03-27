@@ -2,7 +2,6 @@
 
 @section('content')
 
-@include('mensajes')
 
 <div class="row justify-content-center">
 <div class="col-md-12 grid-margin stretch-card">
@@ -96,7 +95,7 @@
                             @if ($curso->id ==$CursoAsignadoBD)
                               <option value="{{ $curso->id }}" selected>{{ $curso->nombre_curso }}</option>
                             @else
-                              <option value="{{ $curso->id }}">{{ $curso->nombre_curso }}</option>
+                              <option value="{{ $curso->id }}">{{ $curso->nombre_curso }}</option>  
                             @endif
                        
                         @endforeach
@@ -105,7 +104,7 @@
             </div>
             <div class="row  mb-5 mt-3">
               <div class="col-md-4">
-                <label class="col-sm-12 col-form-label">Asignar Profesor</label>
+                <label class="col-sm-12 col-form-label">Asignar Sede</label>
                 <select name="profesor_id" class="form-control form-control-sm">
                     <option value="">Seleccione</option>
                     @foreach ($profesores as $profe)

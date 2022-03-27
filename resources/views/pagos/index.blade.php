@@ -24,8 +24,8 @@
             <tbody>
                 @foreach ($pagos as $pago)
                 <tr>
-                    <td>{{ $pago->alumno->nameFullAlumno }}</td>
-                    <td>{{ $pago->curso->nombre_curso }}</td>
+                    <td>{{ $pago->alumno->nameFullAlumno ?? 'Alumno Borrado' }}</td>
+                    <td>{{ $pago->curso->nombre_curso ?? 'Curso Borrado'}}</td>
                     <td>{{ $pago->valor_curso }}</td>
                     <td>{{ $pago->aporte }}</td>
                 </tr>

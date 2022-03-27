@@ -2,7 +2,6 @@
 
 @section('content')
 
-@include('mensajes')
 
 <div class="row justify-content-center">
 <div class="col-md-12 grid-margin stretch-card">
@@ -58,7 +57,7 @@
                 <div class="col-md-4">
                     <label class="col-sm-6 col-form-label">Correo del Alumno</label>
                     <div class="col-sm-12">
-                      <input type="text" name="email_alumno" class="form-control" />
+                      <input type="text" name="email_alumno" class="form-control" required />
                     </div>
                 </div>
 
@@ -102,7 +101,7 @@
 
             <div class="row mb-5">
                 <div class="col-md-4">
-                    <label class="col-sm-12 col-form-label">Asignar Profesor</label>
+                    <label class="col-sm-12 col-form-label">Asignar Sede</label>
                     <select name="profesor_id" class="form-control form-control-sm">
                         <option value="">Seleccione</option>
                         @foreach ($profesores as $profe)

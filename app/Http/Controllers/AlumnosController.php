@@ -3,14 +3,12 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\DB;
-
 use App\Models\Alumnos;
-
 use App\Models\Cursos;
-
 use App\Models\Profesores;
+use App\Models\Pagos;
+
 
 
 class AlumnosController extends Controller
@@ -92,20 +90,32 @@ class AlumnosController extends Controller
             $data->save(); 
         } 
 
-        return redirect('/alumno')->with('mensajeRegistro','Alumno Registrado Correctamente.');
+        return redirect('/alumno')->with('mensaje','Alumno Registrado Correctamente.');
 
     }
 
     
-    public function show(Request $request, $id)
-    {
-        $alumno = Alumnos::findOrFail($id);
-        return view('alumnos.view', compact('alumno'));
-    }
+    public function show(Request $request, $id){
 
+        $pagosCursoAlumno = Pagos::where('alumno_id',$id)->get();
+        $verificarPago = $pagosCursoAlumno->count();
+   
+        if($verificarPago !=0){
+            $sumaPagoTotal  = Pagos::where('alumno_id',$id)->sum('aporte');
+            $SqlvalorCurso = Pagos::where('alumno_id',$id)->limit(1)->get();
+            $valorCurso = ($SqlvalorCurso[0]->valor_curso);
+            $alumno = Alumnos::findOrFail($id);
+            return view('alumnos.view', compact('alumno', 'pagosCursoAlumno','sumaPagoTotal','valorCurso'));
+        }else{
+            $pagosCursoAlumno = 0;
+            $alumno = Alumnos::findOrFail($id); 
+            return view('alumnos.view', compact('alumno','pagosCursoAlumno'));
+        }
+        
+        
+    }
     
-    public function edit($id)
-    {
+    public function edit($id){
 
         $alumno   = Alumnos::findOrFail($id);
         $cursos   = Cursos::get();
@@ -163,16 +173,16 @@ class AlumnosController extends Controller
             $alumno->save(); 
         } 
 
-        return redirect('alumno/')->with('updateAlumno','Alumno actualizado Correctamente.');
+            $updateAlumno ="Alumno actualizado Correctamente";
+        return redirect('alumno/')->with(['updateAlumno' => $updateAlumno]);
     }
 
 
 
-    public function destroy(Request $request, $id)
-    {
+    public function destroy(Request $request, $id){
         $alumno = Alumnos::findOrFail($id);
         $alumno->delete();
-        return redirect('/alumno')->with('mensajeBorrar', 'El alumno fue borrado correctamente.');
+        return redirect('/alumno')->with('mensaje', 'El alumno fue borrado correctamente.');
     }
 
 
