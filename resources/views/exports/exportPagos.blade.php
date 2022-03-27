@@ -24,19 +24,31 @@ header("Content-Disposition: attachment; filename=" . $filename . "");
 <table style="text-align: center;" border='1' cellpadding=1 cellspacing=1>
 <thead>
     <tr style="background:#cecece;">
-        <th>Alumno</th>
-        <th>Curso</th>
-        <th>Valor del Curso</th>
-        <th>Aporte</th>
+        <th>ALUMNO</th>
+        <th>CORREO</th>
+        <th>CEDULA</th>
+        <th>LUGAR. EXP</th>
+        <th>TELEFONO</th>
+        <th>OBSERVACION</th>
+        <th>CURSO</th>
+        <th>VALOR DEL CURSO</th>
+        <th>APORTE</th>
+        <th>FECHA APORTE</th>
     </tr>
 </thead>
     <tbody>
         @foreach ($pagos as $pago)
         <tr>
             <td>{{ $pago->alumno->nameFullAlumno }}</td>
+            <td>{{ $pago->alumno->email_alumno }}</td>
+            <td>{{ $pago->alumno->cedula_alumno }}</td>
+            <td>{{ $pago->alumno->lugar_exp_document }}</td>
+            <td>{{ $pago->alumno->phone_alumno }}</td>
+            <td>{{ $pago->alumno->observ }}</td>
             <td>{{ $pago->curso->nombre_curso }}</td>
             <td>{{ $pago->valor_curso }}</td>
             <td>{{ $pago->aporte }}</td>
+            <td>{{ $pago->created_at->format('Y-m-d') }}</td>
         </tr>
         @endforeach
     </tbody>

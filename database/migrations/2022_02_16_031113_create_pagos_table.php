@@ -12,13 +12,13 @@ class CreatePagosTable extends Migration
         Schema::create('pagos', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('alumno_id');
+           $table->unsignedBigInteger('alumno_id')->nullable();
             $table->foreign('alumno_id')
-            ->references('id')->on('alumnos');
+            ->references('id')->on('alumnos')->onDelete('set null');
 
-            $table->unsignedBigInteger('curso_id');
+            $table->unsignedBigInteger('curso_id')->nullable();
             $table->foreign('curso_id')
-            ->references('id')->on('cursos');
+            ->references('id')->on('cursos')->onDelete('set null');
 
             $table->integer('valor_curso')->nullable();
             $table->integer('aporte')->nullable();
