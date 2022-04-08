@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\ProfesoresController;
 use App\Http\Controllers\AlumnosController;
