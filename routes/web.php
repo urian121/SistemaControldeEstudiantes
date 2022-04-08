@@ -8,10 +8,10 @@ use App\Http\Controllers\SettingsController;
 
 use Illuminate\Support\Facades\Route;
 
-Auth::routes();
+Auth::routes(['register' => false]); //para desactivar el registro de usuario.
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Auth::routes(['register' => false]); //para desactivar el registro de usuario.
+
 
 
 Route::resource('curso', CursosController::class)->middleware('auth');
